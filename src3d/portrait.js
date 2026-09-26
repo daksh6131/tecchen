@@ -75,7 +75,7 @@ export async function renderPortrait({ url, height, accent = '#ffffff', size = 1
 }
 
 export async function saveBlob(path, blob) {
-  const r = await fetch(`/${path}`, { method: 'POST', body: blob });
+  const r = await fetch(`/${path}`, { method: 'POST', body: blob, headers: { 'X-Asset-Drop': '1' } });
   if (!r.ok) throw new Error(`save failed: ${r.status}`);
   return r.text();
 }

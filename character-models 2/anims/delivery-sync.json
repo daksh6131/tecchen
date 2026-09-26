@@ -4,9 +4,9 @@
     "elon_musk": "d8bb48646e893124690208adc95a491cf12205a8bf1f43a6cbc9b1ece51b24ea"
   },
   "folders": [
-    "/Users/daksh/agent vs agent/character-models",
-    "/Users/daksh/agent vs agent/character-models 2",
-    "/Users/daksh/agent vs agent/character-models 3"
+    "character-models",
+    "character-models 2",
+    "character-models 3"
   ],
   "passed": true
 }
