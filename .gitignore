@@ -7,6 +7,8 @@
 !/package.json
 !/serve.py
 !/index.html
+!/classic.html
+!/.nojekyll
 !/tekken3d.html
 !/portrait.html
 !/src/

@@ -3,7 +3,11 @@
 A browser 3D fighting game in the style of Tekken: Elon (xAI) vs Sam (OpenAI).
 Three.js, no build step.
 
-## Run
+## Play
+
+https://daksh6131.github.io/tecchen/
+
+## Run locally
 
 ```bash
 python3 serve.py
@@ -22,7 +26,7 @@ second player (WASD + F G V B). Esc or Backspace goes back.
 ## Layout
 
 - `tekken3d.html`, `src3d/` — the 3D game: renderer, stages, rigs, HUD, audio.
-- `src/` — the shared combat core (fighters, moves, AI, input) and the original 2D game (`index.html`).
+- `src/` — the shared combat core (fighters, moves, AI, input) and the original 2D game (`classic.html`).
 - `character-models/` — rigged character GLBs and material helpers.
 - `character-models 2/anims/` — Mixamo animation clips per fighter.
 - `tests/` — `npm test` runs the node test suite.
