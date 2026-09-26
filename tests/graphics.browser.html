@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Character graphics verification</title>
+<style>body{margin:0;background:#101318;color:#e0e8e9;font:14px system-ui}canvas{width:100%;height:72vh;display:block}#report{padding:18px;white-space:pre-line}.pass{color:#afddb3}.fail{color:#ffaaaa}</style>
+<canvas id="canvas"></canvas><div id="report">Loading the production models and Ultra renderer…</div>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import {createHumanoid} from '../src3d/humanoid.js';
+import {createPost} from '../src3d/post.js';
+import {createWorld} from '../src3d/world.js';
+import {STAGES} from '../src3d/stages.js';
+import {graphics,qualityName} from '../src3d/graphics.js';
+const report=document.getElementById('report');const lines=[];
+function check(ok,label){if(!ok)throw Error(label);lines.push('PASS — '+label);report.textContent=lines.join('\n');}
+try{
+const renderer=new THREE.WebGLRenderer({canvas:document.getElementById('canvas'),powerPreference:'high-performance'});renderer.setPixelRatio(Math.min(devicePixelRatio,graphics.pixelRatio));renderer.setSize(innerWidth,Math.round(innerHeight*.72),false);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.toneMapping=THREE.ACESFilmicToneMapping;
+let shaderError=false;renderer.debug.onShaderError=()=>{shaderError=true;};
+const world=createWorld(renderer);await world.loadStage(STAGES.find(s=>s.id==='neon-dojo'));
+const camera=new THREE.PerspectiveCamera(32,innerWidth/(innerHeight*.72),.05,120);camera.position.set(.4,1.65,5);camera.lookAt(0,1.1,0);
+const post=createPost(renderer,world.scene,camera);check(post.composer.renderTarget1.width===renderer.domElement.width,'initial post buffer matches the canvas pixel width');post.resize(innerWidth,Math.round(innerHeight*.72));
+for(const [char,ident,x,height] of [['sam','sam_altman',-.65,1.8],['elon','elon_musk',.65,1.92]]){
+ const rig=await createHumanoid({url:`../character-models/models/${ident}.glb?v=cinematic-20260924-3`,height,targetHeight:height,clips:`../character-models 2/anims/${char}`});world.scene.add(rig.object);rig.object.position.x=x;await rig.clipsPromise;
+ check(Object.keys(rig.bones).length===53,`${char}: original 53-bone animation rig`);
+ check(rig.hasClip('victory')&&rig.hasClip('victory_match')&&rig.hasClip('jab'),`${char}: combat and celebration clips load`);
+ rig.animate({state:'victory',stateSerial:1});for(let i=0;i<220;i++)rig.tick(1/60);
+ let skin,cloth,eyes;rig.object.traverse(o=>{if(o.isMesh)for(const m of Array.isArray(o.material)?o.material:[o.material]){if(m.name===ident+'_skin')skin=m;if(m.name===ident+'_cotton')cloth=m;if(m.name===ident+'_eyes')eyes=m;}});
+ check(skin?.normalMap&&skin?.roughnessMap&&skin.normalMap.image.width===4096,`${char}: 4K skin normals and roughness active`);
+ check(skin?.map?.image.width===4096,`${char}: new 4K face colour atlas active`);
+ check(cloth?.normalMap&&cloth?.roughnessMap,`${char}: cloth folds/weave and roughness active`);
+ check(eyes?.clearcoat>0,`${char}: physical wet-eye layer active`);
+}
+world.update(1/60,0,0);post.render(0,0,0);
+check(!shaderError,'skin, floor and postprocessing shaders compile');
+check(renderer.getContext().getError()===0,'no WebGL error after the full Ultra frame');
+check(post.composer.renderTarget1.samples===Math.min(graphics.samples,renderer.capabilities.maxSamples),'multisample HDR rendering enabled');
+check(world.lights.key.shadow.mapSize.x===graphics.shadowSize,'shadow resolution matches selected quality');
+const samples=[];let previous=performance.now();let frames=0;
+function frame(now){const dt=(now-previous)/1000;previous=now;if(frames>10)samples.push(dt);world.update(dt,now/1000,0);post.render(now/1000,0,0);if(++frames<100)requestAnimationFrame(frame);else{const sorted=samples.sort((a,b)=>a-b);const median=sorted[Math.floor(sorted.length/2)];report.className='pass';report.textContent=lines.join('\n')+`\nALL PASSED · ${qualityName} · ${Math.round(1/median)} sampled fps (${document.visibilityState}; background timing is not a gameplay benchmark) · ${renderer.domElement.width}×${renderer.domElement.height}`;}}
+requestAnimationFrame(frame);
+}catch(e){report.className='fail';report.textContent=lines.join('\n')+'\nFAILED — '+e.message;console.error(e);}
+</script></html>

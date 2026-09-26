@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "clips": 4,
+  "checks": [
+    "Exact idle opening pose",
+    "53-bone transform tracks",
+    "Required duration range",
+    "No horizontal pelvis travel <1mm",
+    "Constant final held pose",
+    "30fps frame counts"
+  ],
+  "results": [
+    {
+      "character": "sam",
+      "clip": "victory",
+      "duration": 3.200000047683716,
+      "frames": 97,
+      "idle_start_max_error": 3.6954879760742188e-06,
+      "held_pose_max_error": 8.940697299175682e-08,
+      "horizontal_drift_m": 6.007030017851633e-08,
+      "hold_duration_s": 0.6000000476837157
+    },
+    {
+      "character": "sam",
+      "clip": "victory_match",
+      "duration": 5.699999809265137,
+      "frames": 172,
+      "idle_start_max_error": 3.6954879760742188e-06,
+      "held_pose_max_error": 5.0193370793039094e-08,
+      "horizontal_drift_m": 6.007030017851633e-08,
+      "hold_duration_s": 0.5999998092651371
+    },
+    {
+      "character": "elon",
+      "clip": "victory",
+      "duration": 3.299999952316284,
+      "frames": 100,
+      "idle_start_max_error": 7.748603820800781e-07,
+      "held_pose_max_error": 9.271833167900922e-08,
+      "horizontal_drift_m": 7.078050862086016e-08,
+      "hold_duration_s": 0.7333332856496173
+    },
+    {
+      "character": "elon",
+      "clip": "victory_match",
+      "duration": 5.699999809265137,
+      "frames": 172,
+      "idle_start_max_error": 7.748603820800781e-07,
+      "held_pose_max_error": 4.9844808613919156e-08,
+      "horizontal_drift_m": 7.823109271498652e-08,
+      "hold_duration_s": 0.7333331425984699
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "model_files": {
+    "sam_altman": "dc1e7af601478f891973c13e09cd03f834475b6a2b2bf56f6ce0e0e8c512f8bc",
+    "elon_musk": "d8bb48646e893124690208adc95a491cf12205a8bf1f43a6cbc9b1ece51b24ea"
+  },
+  "folders": [
+    "/Users/daksh/agent vs agent/character-models",
+    "/Users/daksh/agent vs agent/character-models 2",
+    "/Users/daksh/agent vs agent/character-models 3"
+  ],
+  "passed": true
+}

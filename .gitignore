@@ -1,0 +1,46 @@
+# Allowlist: this folder also holds unrelated projects, archives, Blender
+# sources and personal files. Only the game is tracked.
+/*
+!/.gitignore
+!/README.md
+!/README-3D.md
+!/package.json
+!/serve.py
+!/index.html
+!/tekken3d.html
+!/portrait.html
+!/src/
+!/src3d/
+!/tests/
+!/docs/
+!/.claude/
+/.claude/*
+!/.claude/launch.json
+
+!/assets/
+/assets/*
+!/assets/logo/
+!/assets/pfp/
+!/assets/sprites/
+!/assets/stage_wide_*.jpg
+!/assets/stages_*.png
+
+!/character-models/
+/character-models/*
+!/character-models/LICENSE-ASSETS.txt
+!/character-models/models/
+/character-models/models/*
+!/character-models/models/*.glb
+!/character-models/render/
+
+!/character-models 2/
+/character-models 2/*
+!/character-models 2/LICENSE-ASSETS.txt
+!/character-models 2/anims/
+/character-models 2/anims/*/*
+!/character-models 2/anims/*/*.glb
+!/character-models 2/anims/*/manifest.json
+
+.DS_Store
+*.blend
+*.blend1

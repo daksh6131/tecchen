@@ -1,0 +1,835 @@
+{
+  "character": "elon",
+  "model": "../../models/elon_musk.glb",
+  "model_revision": "edfbbe1e8316",
+  "source": "Adobe Mixamo mocap; local FK conversion, contact retiming and guard cleanup",
+  "skeleton": "MakeHuman game_engine, 53 bones",
+  "fps": 30,
+  "clips": [
+    {
+      "name": "idle",
+      "file": "idle.glb",
+      "fbx": "idle.fbx",
+      "duration": 2.5,
+      "fps": 30,
+      "frames": 76,
+      "loop": true,
+      "description": "Boxing Idle",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_idle.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=43",
+        "movement=35",
+        "with-skin=true"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "54b2134517be"
+    },
+    {
+      "name": "walk",
+      "file": "walk.glb",
+      "fbx": "walk.fbx",
+      "duration": 1.0666666666666667,
+      "fps": 30,
+      "frames": 33,
+      "loop": true,
+      "description": "Boxing Advancing Forward",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_walk.fbx",
+      "settings": [
+        "in-place=true",
+        "arm-space=62",
+        "overdrive=45"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "70aed1ce9c90"
+    },
+    {
+      "name": "walk_back",
+      "file": "walk_back.glb",
+      "fbx": "walk_back.fbx",
+      "duration": 0.8666666666666667,
+      "fps": 30,
+      "frames": 27,
+      "loop": true,
+      "description": "Walking Backwards \u2014 One Foot At A Time In Combat Pose",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_walk_back.fbx",
+      "settings": [
+        "in-place=true",
+        "arm-space=62",
+        "bounce=35"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "cbc7235b9b06"
+    },
+    {
+      "name": "run",
+      "file": "run.glb",
+      "fbx": "run.fbx",
+      "duration": 0.8666666666666667,
+      "fps": 30,
+      "frames": 27,
+      "loop": true,
+      "description": "Male Weighted Run",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_run.fbx",
+      "settings": [
+        "in-place=true",
+        "arm-space=62",
+        "overdrive=45"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "00dd46f17d0b"
+    },
+    {
+      "name": "jab",
+      "file": "jab.glb",
+      "fbx": "jab.fbx",
+      "duration": 1.8333333333333333,
+      "fps": 30,
+      "frames": 56,
+      "loop": false,
+      "description": "Boxing Leading Hand Jab",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_jab.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=45"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "085d6a93c527"
+    },
+    {
+      "name": "cross",
+      "file": "cross.glb",
+      "fbx": "cross.fbx",
+      "duration": 2.2333333333333334,
+      "fps": 30,
+      "frames": 68,
+      "loop": false,
+      "description": "Back Hand Cross",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_cross.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=45"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "60e7ec94e0c0"
+    },
+    {
+      "name": "hook",
+      "file": "hook.glb",
+      "fbx": "hook.fbx",
+      "duration": 2.2666666666666666,
+      "fps": 30,
+      "frames": 69,
+      "loop": false,
+      "description": "Boxing Back Hand Hook",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_hook.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=45"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "b09ac32b19bd"
+    },
+    {
+      "name": "uppercut",
+      "file": "uppercut.glb",
+      "fbx": "uppercut.fbx",
+      "duration": 2.3,
+      "fps": 30,
+      "frames": 70,
+      "loop": false,
+      "description": "Boxing Back Hand Uppercut",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_uppercut.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=45"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "e8f4848ad6c0"
+    },
+    {
+      "name": "roundhouse",
+      "file": "roundhouse.glb",
+      "fbx": "roundhouse.fbx",
+      "duration": 1.7666666666666666,
+      "fps": 30,
+      "frames": 54,
+      "loop": false,
+      "description": "Mma Roundhouse Kick",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_roundhouse.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=45"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "47f26a1058f8"
+    },
+    {
+      "name": "snap_kick",
+      "file": "snap_kick.glb",
+      "fbx": "snap_kick.fbx",
+      "duration": 1.7,
+      "fps": 30,
+      "frames": 52,
+      "loop": false,
+      "description": "Male Front Snap Kick With The Lead Foot",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_snap_kick.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=45"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "dcb6a5344185"
+    },
+    {
+      "name": "sweep",
+      "file": "sweep.glb",
+      "fbx": "sweep.fbx",
+      "duration": 1.8333333333333333,
+      "fps": 30,
+      "frames": 56,
+      "loop": false,
+      "description": "Front Leg Sweep",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_sweep.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=45"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "badaa429e105"
+    },
+    {
+      "name": "flying_kick",
+      "file": "flying_kick.glb",
+      "fbx": "flying_kick.fbx",
+      "duration": 0.7,
+      "fps": 30,
+      "frames": 22,
+      "loop": false,
+      "description": "Flying Bicycle Kick",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_flying_kick.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=45"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "1badc417d711"
+    },
+    {
+      "name": "block",
+      "file": "block.glb",
+      "fbx": "block.fbx",
+      "duration": 1.8666666666666667,
+      "fps": 30,
+      "frames": 57,
+      "loop": false,
+      "description": "High Center Block",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_block.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=45"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "0453974cac72"
+    },
+    {
+      "name": "head_hit",
+      "file": "head_hit.glb",
+      "fbx": "head_hit.fbx",
+      "duration": 0.9333333333333333,
+      "fps": 30,
+      "frames": 29,
+      "loop": false,
+      "description": "Receiving A Light Hit To The Head From A Right Punch",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_head_hit.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=50"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "80ed5ace9242"
+    },
+    {
+      "name": "body_hit",
+      "file": "body_hit.glb",
+      "fbx": "body_hit.fbx",
+      "duration": 1.2,
+      "fps": 30,
+      "frames": 37,
+      "loop": false,
+      "description": "Receiving A Hit In The Stomach",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_body_hit.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=50"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "05b9eb48d15e"
+    },
+    {
+      "name": "knocked_down",
+      "file": "knocked_down.glb",
+      "fbx": "knocked_down.fbx",
+      "duration": 2.2333333333333334,
+      "fps": 30,
+      "frames": 68,
+      "loop": false,
+      "description": "Male Knocked Down From A Punch",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_knocked_down.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=45"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "e761c65cc7ff"
+    },
+    {
+      "name": "crouch",
+      "file": "crouch.glb",
+      "fbx": "crouch.fbx",
+      "duration": 2.6333333333333333,
+      "fps": 30,
+      "frames": 80,
+      "loop": true,
+      "description": "Low Crouching Idle",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_crouch.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=45"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "9404a8cb4964"
+    },
+    {
+      "name": "jump",
+      "file": "jump.glb",
+      "fbx": "jump.fbx",
+      "duration": 2.466666666666667,
+      "fps": 30,
+      "frames": 75,
+      "loop": false,
+      "description": "Unarmed Jump \u2014 Jumping And Landing In Place",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_jump.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=45"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "f5e016eda8d0"
+    },
+    {
+      "name": "hammer_fist",
+      "file": "hammer_fist.glb",
+      "fbx": "hammer_fist.fbx",
+      "duration": 1.4333333333333333,
+      "fps": 30,
+      "frames": 44,
+      "loop": false,
+      "description": "Zombie Overhead Two-Hand Attack (Zombie Attack)",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_hammer_fist.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=50",
+        "substitute=two-hand-overhead-smash"
+      ],
+      "suggested_contact_seconds": [
+        0.4666666666666667
+      ],
+      "root_motion": "In place: horizontal pelvis translation removed; vertical jumps/falls preserved. Move displacement belongs to the engine.",
+      "group": "combos-20260924",
+      "contact_frames": [
+        15
+      ],
+      "contact_frame_convention": "1-based at 30 fps; t=(frame-1)/30",
+      "retime": [
+        [
+          0,
+          20
+        ],
+        [
+          14,
+          44
+        ],
+        [
+          21,
+          54
+        ],
+        [
+          43,
+          105
+        ]
+      ],
+      "substitution": "Zombie Overhead Two-Hand Attack (Zombie Attack): two-handed overhead hammer, with shortened recovery to guard.",
+      "revision": "bbdfed520aa6"
+    },
+    {
+      "name": "knee",
+      "file": "knee.glb",
+      "fbx": "knee.fbx",
+      "duration": 1.2333333333333334,
+      "fps": 30,
+      "frames": 38,
+      "loop": false,
+      "description": "Muay Thai Illegal Knee (Illegal Knee)",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_knee.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=50"
+      ],
+      "suggested_contact_seconds": [
+        0.4
+      ],
+      "root_motion": "In place: horizontal pelvis translation removed; vertical jumps/falls preserved. Move displacement belongs to the engine.",
+      "group": "combos-20260924",
+      "contact_frames": [
+        13
+      ],
+      "contact_frame_convention": "1-based at 30 fps; t=(frame-1)/30",
+      "retime": [
+        [
+          0,
+          0
+        ],
+        [
+          12,
+          27
+        ],
+        [
+          37,
+          68
+        ]
+      ],
+      "substitution": null,
+      "revision": "2c89e3a9ab17"
+    },
+    {
+      "name": "stomp",
+      "file": "stomp.glb",
+      "fbx": "stomp.fbx",
+      "duration": 1.3,
+      "fps": 30,
+      "frames": 40,
+      "loop": false,
+      "description": "Hard Floor Stomp (Stomp)",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_stomp.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=50"
+      ],
+      "suggested_contact_seconds": [
+        0.4666666666666667
+      ],
+      "root_motion": "In place: horizontal pelvis translation removed; vertical jumps/falls preserved. Move displacement belongs to the engine.",
+      "group": "combos-20260924",
+      "contact_frames": [
+        15
+      ],
+      "contact_frame_convention": "1-based at 30 fps; t=(frame-1)/30",
+      "retime": [
+        [
+          0,
+          0
+        ],
+        [
+          14,
+          25
+        ],
+        [
+          39,
+          56
+        ]
+      ],
+      "substitution": null,
+      "revision": "8ef3dc79a0ed"
+    },
+    {
+      "name": "haymaker",
+      "file": "haymaker.glb",
+      "fbx": "haymaker.fbx",
+      "duration": 1.8333333333333333,
+      "fps": 30,
+      "frames": 56,
+      "loop": false,
+      "description": "Long Hook Punch To The Head (Hook)",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_haymaker.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=50",
+        "substitute=long-hook-for-haymaker"
+      ],
+      "suggested_contact_seconds": [
+        0.7
+      ],
+      "root_motion": "In place: horizontal pelvis translation removed; vertical jumps/falls preserved. Move displacement belongs to the engine.",
+      "group": "combos-20260924",
+      "contact_frames": [
+        22
+      ],
+      "contact_frame_convention": "1-based at 30 fps; t=(frame-1)/30",
+      "retime": [
+        [
+          0,
+          0
+        ],
+        [
+          21,
+          19
+        ],
+        [
+          55,
+          68
+        ]
+      ],
+      "substitution": "Long Hook Punch To The Head (Hook), with extended wind-up.",
+      "revision": "e3bdb92a8418"
+    },
+    {
+      "name": "shoulder_tackle",
+      "file": "shoulder_tackle.glb",
+      "fbx": "shoulder_tackle.fbx",
+      "duration": 1.5666666666666667,
+      "fps": 30,
+      "frames": 48,
+      "loop": false,
+      "description": "Running To Tackle (Defender)",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_shoulder_tackle.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=50",
+        "substitute=football-tackle-for-shoulder-ram"
+      ],
+      "suggested_contact_seconds": [
+        0.5333333333333333
+      ],
+      "root_motion": "In place: horizontal pelvis translation removed; vertical jumps/falls preserved. Move displacement belongs to the engine.",
+      "group": "combos-20260924",
+      "contact_frames": [
+        17
+      ],
+      "contact_frame_convention": "1-based at 30 fps; t=(frame-1)/30",
+      "retime": [
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          27
+        ],
+        [
+          22,
+          29
+        ],
+        [
+          47,
+          29
+        ]
+      ],
+      "substitution": "Running To Tackle (Defender): charging shoulder contact, rotated forward, fall removed, authored return to standing guard.",
+      "revision": "f725519b7dc5"
+    },
+    {
+      "name": "spin_back_kick",
+      "file": "spin_back_kick.glb",
+      "fbx": "spin_back_kick.fbx",
+      "duration": 1.5666666666666667,
+      "fps": 30,
+      "frames": 48,
+      "loop": false,
+      "description": "Mma Spinning Back Kick",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_spin_back_kick.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=50"
+      ],
+      "suggested_contact_seconds": [
+        0.5666666666666667
+      ],
+      "root_motion": "In place: horizontal pelvis translation removed; vertical jumps/falls preserved. Move displacement belongs to the engine.",
+      "group": "combos-20260924",
+      "contact_frames": [
+        18
+      ],
+      "contact_frame_convention": "1-based at 30 fps; t=(frame-1)/30",
+      "retime": [
+        [
+          0,
+          0
+        ],
+        [
+          17,
+          29
+        ],
+        [
+          47,
+          61
+        ]
+      ],
+      "substitution": null,
+      "revision": "e5085d977980"
+    },
+    {
+      "name": "ground_pound",
+      "file": "ground_pound.glb",
+      "fbx": "ground_pound.fbx",
+      "duration": 2.1666666666666665,
+      "fps": 30,
+      "frames": 66,
+      "loop": false,
+      "description": "Mutant Jump Attack To Ready Pose (Jump Attack)",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_ground_pound.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=50",
+        "substitute=mutant-jump-attack-for-ground-smash"
+      ],
+      "suggested_contact_seconds": [
+        0.8333333333333334
+      ],
+      "root_motion": "In place: horizontal pelvis translation removed; vertical jumps/falls preserved. Move displacement belongs to the engine.",
+      "group": "combos-20260924",
+      "contact_frames": [
+        26
+      ],
+      "contact_frame_convention": "1-based at 30 fps; t=(frame-1)/30",
+      "retime": [
+        [
+          0,
+          0
+        ],
+        [
+          25,
+          51
+        ],
+        [
+          65,
+          114
+        ]
+      ],
+      "substitution": null,
+      "revision": "35c92876276e"
+    },
+    {
+      "name": "get_up",
+      "file": "get_up.glb",
+      "fbx": "get_up.fbx",
+      "duration": 2.3,
+      "fps": 30,
+      "frames": 70,
+      "loop": false,
+      "description": "Getting Up From Back",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_get_up.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=50",
+        "injury-level=0",
+        "get-up=50"
+      ],
+      "suggested_contact_seconds": [],
+      "root_motion": "In place: horizontal pelvis translation removed; vertical jumps/falls preserved. Move displacement belongs to the engine.",
+      "group": "combos-20260924",
+      "contact_frames": [],
+      "contact_frame_convention": "1-based at 30 fps; t=(frame-1)/30",
+      "retime": [
+        [
+          0,
+          60
+        ],
+        [
+          57,
+          209
+        ],
+        [
+          69,
+          220
+        ]
+      ],
+      "substitution": null,
+      "revision": "24f6d6d3ad9b"
+    },
+    {
+      "name": "stagger",
+      "file": "stagger.glb",
+      "fbx": "stagger.fbx",
+      "duration": 1.3,
+      "fps": 30,
+      "frames": 40,
+      "loop": false,
+      "description": "Receiving A Big Hit From A Straight Punch (Big Hit To Head)",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_stagger.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=50",
+        "substitute=big-hit-reaction-for-stagger"
+      ],
+      "suggested_contact_seconds": [],
+      "root_motion": "In place: horizontal pelvis translation removed; vertical jumps/falls preserved. Move displacement belongs to the engine.",
+      "group": "combos-20260924",
+      "contact_frames": [],
+      "contact_frame_convention": "1-based at 30 fps; t=(frame-1)/30",
+      "retime": [
+        [
+          0,
+          0
+        ],
+        [
+          39,
+          39
+        ]
+      ],
+      "substitution": "Big Hit To Head: recoil reaction, rather than a dedicated two-step stagger",
+      "revision": "2022b49aca8c"
+    },
+    {
+      "name": "rage_hit",
+      "file": "rage_hit.glb",
+      "fbx": "rage_hit.fbx",
+      "duration": 2.566666666666667,
+      "fps": 30,
+      "frames": 78,
+      "loop": false,
+      "description": "Male Knocked Down From A Punch",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/elon_rage_hit.fbx",
+      "settings": [
+        "arm-space=62",
+        "overdrive=45"
+      ],
+      "suggested_contact_seconds": [],
+      "root_motion": "In place: horizontal pelvis translation removed; vertical jumps/falls preserved. Move displacement belongs to the engine.",
+      "group": "combos-20260924",
+      "contact_frames": [],
+      "contact_frame_convention": "1-based at 30 fps; t=(frame-1)/30",
+      "retime": [
+        [
+          0,
+          0
+        ],
+        [
+          77,
+          67
+        ]
+      ],
+      "substitution": "Retimed existing Stunned / Male Knocked Down From A Punch, expressly allowed by brief",
+      "revision": "cbb9479a3c7e"
+    },
+    {
+      "name": "victory",
+      "file": "victory.glb",
+      "fbx": "victory.fbx",
+      "duration": 3.3,
+      "fps": 30,
+      "frames": 100,
+      "loop": false,
+      "hold_last_frame": true,
+      "hold_start_frame": 78,
+      "description": "Power victory: planted fist raise and skyward roar into a front double-biceps hold",
+      "source": "Adobe Mixamo retargeting + authored gesture composition and FK/IK cleanup",
+      "source_files": [
+        "../mixamo-source/elon_idle.fbx",
+        "../mixamo-source/elon_celebration_raise.fbx",
+        "../mixamo-source/elon_celebration_flex.fbx",
+        "../mixamo-source/elon_celebration_point.fbx"
+      ],
+      "source_motions": [
+        "Boxing Idle",
+        "Victory From A Boxing Win (Victory)",
+        "Flexing Muscles (Taunt)",
+        "Quickly Pointing Angrily Forward (Angry Point)"
+      ],
+      "group": "celebrations-20260924",
+      "beats": {
+        "roar": 43,
+        "flex": 77
+      },
+      "opening": "Exact first idle.glb pose",
+      "root_motion": "In place; constant horizontal pelvis; +Z initial facing; body turn retained for Sam match victory",
+      "revision": "064286750378"
+    },
+    {
+      "name": "victory_match",
+      "file": "victory_match.glb",
+      "fbx": "victory_match.fbx",
+      "duration": 5.7,
+      "fps": 30,
+      "frames": 172,
+      "loop": false,
+      "hold_last_frame": true,
+      "hold_start_frame": 150,
+      "description": "Dominant finish: roar, two right-fist chest beats, planted stomp and camera point",
+      "source": "Adobe Mixamo retargeting + authored gesture composition and FK/IK cleanup",
+      "source_files": [
+        "../mixamo-source/elon_idle.fbx",
+        "../mixamo-source/elon_celebration_raise.fbx",
+        "../mixamo-source/elon_hook.fbx",
+        "../mixamo-source/elon_stomp.fbx",
+        "../mixamo-source/elon_celebration_point.fbx"
+      ],
+      "source_motions": [
+        "Boxing Idle",
+        "Victory From A Boxing Win (Victory)",
+        "Boxing Back Hand Hook",
+        "Hard Floor Stomp (Stomp)",
+        "Quickly Pointing Angrily Forward (Angry Point)"
+      ],
+      "group": "celebrations-20260924",
+      "beats": {
+        "roar": 43,
+        "chest_beats": [
+          74,
+          88
+        ],
+        "stomp": 112,
+        "point": 149
+      },
+      "opening": "Exact first idle.glb pose",
+      "root_motion": "In place; constant horizontal pelvis; +Z initial facing; body turn retained for Sam match victory",
+      "revision": "1c47e641e3ad"
+    }
+  ]
+}

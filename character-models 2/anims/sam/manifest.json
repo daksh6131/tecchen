@@ -1,0 +1,858 @@
+{
+  "character": "sam",
+  "model": "../../models/sam_altman.glb",
+  "model_revision": "95ee3ea5a5b4",
+  "source": "Adobe Mixamo mocap; local FK conversion, contact retiming and guard cleanup",
+  "skeleton": "MakeHuman game_engine, 53 bones",
+  "fps": 30,
+  "clips": [
+    {
+      "name": "idle",
+      "file": "idle.glb",
+      "fbx": "idle.fbx",
+      "duration": 1.9,
+      "fps": 30,
+      "frames": 58,
+      "loop": true,
+      "description": "Bouncing Boxing Idle",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_idle.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=58"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "42c1ab050a08"
+    },
+    {
+      "name": "walk",
+      "file": "walk.glb",
+      "fbx": "walk.fbx",
+      "duration": 0.8333333333333334,
+      "fps": 30,
+      "frames": 26,
+      "loop": true,
+      "description": "Boxing Advancing Forward",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_walk.fbx",
+      "settings": [
+        "in-place=true",
+        "arm-space=48",
+        "overdrive=60"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "110b6ba40fb0"
+    },
+    {
+      "name": "walk_back",
+      "file": "walk_back.glb",
+      "fbx": "walk_back.fbx",
+      "duration": 0.7333333333333333,
+      "fps": 30,
+      "frames": 23,
+      "loop": true,
+      "description": "Short Boxing Step Backward",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_walk_back.fbx",
+      "settings": [
+        "local-in-place-conversion=true",
+        "arm-space=48",
+        "overdrive=62"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "64aecc7b4ba9"
+    },
+    {
+      "name": "run",
+      "file": "run.glb",
+      "fbx": "run.fbx",
+      "duration": 0.6,
+      "fps": 30,
+      "frames": 19,
+      "loop": true,
+      "description": "Running With Intention",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_run.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=60",
+        "in-place=true"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "5975ae59596a"
+    },
+    {
+      "name": "jab",
+      "file": "jab.glb",
+      "fbx": "jab.fbx",
+      "duration": 1.3666666666666667,
+      "fps": 30,
+      "frames": 42,
+      "loop": false,
+      "description": "Boxing Leading Hand Jab",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_jab.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=63"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "df5d8f43b181"
+    },
+    {
+      "name": "cross",
+      "file": "cross.glb",
+      "fbx": "cross.fbx",
+      "duration": 1.7333333333333334,
+      "fps": 30,
+      "frames": 53,
+      "loop": false,
+      "description": "Back Hand Cross",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_cross.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=61"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "87fa95cc8c61"
+    },
+    {
+      "name": "hook",
+      "file": "hook.glb",
+      "fbx": "hook.fbx",
+      "duration": 1.1,
+      "fps": 30,
+      "frames": 34,
+      "loop": false,
+      "description": "Short Hook Punch To The Head",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_hook.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=60"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "2a7aae2a989b"
+    },
+    {
+      "name": "uppercut",
+      "file": "uppercut.glb",
+      "fbx": "uppercut.fbx",
+      "duration": 1.8333333333333333,
+      "fps": 30,
+      "frames": 56,
+      "loop": false,
+      "description": "Boxing Lead Hand Uppercut",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_uppercut.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=60"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "49dbca0c9b7b"
+    },
+    {
+      "name": "roundhouse",
+      "file": "roundhouse.glb",
+      "fbx": "roundhouse.fbx",
+      "duration": 1.2333333333333334,
+      "fps": 30,
+      "frames": 38,
+      "loop": false,
+      "description": "Roundhouse Kick With The Rear Foot",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_roundhouse.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=60"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "3de217b9caf8"
+    },
+    {
+      "name": "snap_kick",
+      "file": "snap_kick.glb",
+      "fbx": "snap_kick.fbx",
+      "duration": 1.2666666666666666,
+      "fps": 30,
+      "frames": 39,
+      "loop": false,
+      "description": "Male Front Snap Kick With The Lead Foot",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_snap_kick.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=64"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "2ef8f12bb832"
+    },
+    {
+      "name": "sweep",
+      "file": "sweep.glb",
+      "fbx": "sweep.fbx",
+      "duration": 1.4,
+      "fps": 30,
+      "frames": 43,
+      "loop": false,
+      "description": "Front Leg Sweep",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_sweep.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=62"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "8d258ea2d320"
+    },
+    {
+      "name": "flying_kick",
+      "file": "flying_kick.glb",
+      "fbx": "flying_kick.fbx",
+      "duration": 0.5333333333333333,
+      "fps": 30,
+      "frames": 17,
+      "loop": false,
+      "description": "Flying Bicycle Kick",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_flying_kick.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=62"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "3e74abf91b39"
+    },
+    {
+      "name": "block",
+      "file": "block.glb",
+      "fbx": "block.fbx",
+      "duration": 1.4333333333333333,
+      "fps": 30,
+      "frames": 44,
+      "loop": false,
+      "description": "High Right Block",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_block.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=60"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "dbafab6aca68"
+    },
+    {
+      "name": "head_hit",
+      "file": "head_hit.glb",
+      "fbx": "head_hit.fbx",
+      "duration": 1.0666666666666667,
+      "fps": 30,
+      "frames": 33,
+      "loop": false,
+      "description": "Receiving A Medium Hit To The Head From A Left Punch",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_head_hit.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=58"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "f05cdb7200a0"
+    },
+    {
+      "name": "body_hit",
+      "file": "body_hit.glb",
+      "fbx": "body_hit.fbx",
+      "duration": 0.8333333333333334,
+      "fps": 30,
+      "frames": 26,
+      "loop": false,
+      "description": "Receiving A Hit In The Ribs",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_body_hit.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=58"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "90f33d3d9f5b"
+    },
+    {
+      "name": "knocked_down",
+      "file": "knocked_down.glb",
+      "fbx": "knocked_down.fbx",
+      "duration": 1.9333333333333333,
+      "fps": 30,
+      "frames": 59,
+      "loop": false,
+      "description": "Male Knocked Down From A Punch",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_knocked_down.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=55"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "63aa508c39a9"
+    },
+    {
+      "name": "crouch",
+      "file": "crouch.glb",
+      "fbx": "crouch.fbx",
+      "duration": 2.1666666666666665,
+      "fps": 30,
+      "frames": 66,
+      "loop": true,
+      "description": "Low Crouching Idle",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_crouch.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=58"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "aef75d6bdbba"
+    },
+    {
+      "name": "jump",
+      "file": "jump.glb",
+      "fbx": "jump.fbx",
+      "duration": 1.9333333333333333,
+      "fps": 30,
+      "frames": 59,
+      "loop": false,
+      "description": "Unarmed Jump \u2014 Jumping And Landing In Place",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_jump.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=60"
+      ],
+      "suggested_contact_seconds": null,
+      "root_motion": "In-place locomotion; visual body movement is baked into pelvis translation. Jump and fall include vertical motion.",
+      "revision": "1ed7abff8bf9"
+    },
+    {
+      "name": "low_kick",
+      "file": "low_kick.glb",
+      "fbx": "low_kick.fbx",
+      "duration": 1.1,
+      "fps": 30,
+      "frames": 34,
+      "loop": false,
+      "description": "Mma Low Kick",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_low_kick.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=50"
+      ],
+      "suggested_contact_seconds": [
+        0.3333333333333333
+      ],
+      "root_motion": "In place: horizontal pelvis translation removed; vertical jumps/falls preserved. Move displacement belongs to the engine.",
+      "group": "combos-20260924",
+      "contact_frames": [
+        11
+      ],
+      "contact_frame_convention": "1-based at 30 fps; t=(frame-1)/30",
+      "retime": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          18
+        ],
+        [
+          33,
+          45
+        ]
+      ],
+      "substitution": "Mma Low Kick: rear-leg kick at upper-shin/knee height, rather than a lead ankle kick.",
+      "revision": "85ce9dd8d832"
+    },
+    {
+      "name": "high_roundhouse",
+      "file": "high_roundhouse.glb",
+      "fbx": "high_roundhouse.fbx",
+      "duration": 1.3,
+      "fps": 30,
+      "frames": 40,
+      "loop": false,
+      "description": "Mma Roundhouse Kick",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_high_roundhouse.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=50"
+      ],
+      "suggested_contact_seconds": [
+        0.4
+      ],
+      "root_motion": "In place: horizontal pelvis translation removed; vertical jumps/falls preserved. Move displacement belongs to the engine.",
+      "group": "combos-20260924",
+      "contact_frames": [
+        13
+      ],
+      "contact_frame_convention": "1-based at 30 fps; t=(frame-1)/30",
+      "retime": [
+        [
+          0,
+          0
+        ],
+        [
+          12,
+          23
+        ],
+        [
+          39,
+          50
+        ]
+      ],
+      "substitution": null,
+      "revision": "e89d19ef58e2"
+    },
+    {
+      "name": "body_jab",
+      "file": "body_jab.glb",
+      "fbx": "body_jab.fbx",
+      "duration": 1.0333333333333334,
+      "fps": 30,
+      "frames": 32,
+      "loop": false,
+      "description": "Short Body Jab (Lead Jab)",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_body_jab.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=50"
+      ],
+      "suggested_contact_seconds": [
+        0.3
+      ],
+      "root_motion": "In place: horizontal pelvis translation removed; vertical jumps/falls preserved. Move displacement belongs to the engine.",
+      "group": "combos-20260924",
+      "contact_frames": [
+        10
+      ],
+      "contact_frame_convention": "1-based at 30 fps; t=(frame-1)/30",
+      "retime": [
+        [
+          0,
+          0
+        ],
+        [
+          9,
+          14
+        ],
+        [
+          31,
+          32
+        ]
+      ],
+      "substitution": null,
+      "revision": "b85dbf423a32"
+    },
+    {
+      "name": "elbow",
+      "file": "elbow.glb",
+      "fbx": "elbow.fbx",
+      "duration": 1.2333333333333334,
+      "fps": 30,
+      "frames": 38,
+      "loop": false,
+      "description": "Illegal Elbow Rear Arm With Forward Step (Elbow Punch)",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_elbow.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=50",
+        "hit-angle=100"
+      ],
+      "suggested_contact_seconds": [
+        0.4
+      ],
+      "root_motion": "In place: horizontal pelvis translation removed; vertical jumps/falls preserved. Move displacement belongs to the engine.",
+      "group": "combos-20260924",
+      "contact_frames": [
+        13
+      ],
+      "contact_frame_convention": "1-based at 30 fps; t=(frame-1)/30",
+      "retime": [
+        [
+          0,
+          0
+        ],
+        [
+          12,
+          20
+        ],
+        [
+          37,
+          52
+        ]
+      ],
+      "substitution": null,
+      "revision": "b8c26e24d93e"
+    },
+    {
+      "name": "hop_kick",
+      "file": "hop_kick.glb",
+      "fbx": "hop_kick.fbx",
+      "duration": 1.4333333333333333,
+      "fps": 30,
+      "frames": 44,
+      "loop": false,
+      "description": "Flying Sidekick From A Run (Flying Kick)",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_hop_kick.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=50",
+        "substitute=running-sidekick-for-small-hop-kick"
+      ],
+      "suggested_contact_seconds": [
+        0.4
+      ],
+      "root_motion": "In place: horizontal pelvis translation removed; vertical jumps/falls preserved. Move displacement belongs to the engine.",
+      "group": "combos-20260924",
+      "contact_frames": [
+        13
+      ],
+      "contact_frame_convention": "1-based at 30 fps; t=(frame-1)/30",
+      "retime": [
+        [
+          0,
+          0
+        ],
+        [
+          12,
+          12
+        ],
+        [
+          43,
+          45
+        ]
+      ],
+      "substitution": "Flying Sidekick From A Run; side kick instead of small rising front hop",
+      "revision": "3d39d4a9a7c2"
+    },
+    {
+      "name": "spin_back_kick",
+      "file": "spin_back_kick.glb",
+      "fbx": "spin_back_kick.fbx",
+      "duration": 1.5,
+      "fps": 30,
+      "frames": 46,
+      "loop": false,
+      "description": "Mma Spinning Back Kick",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_spin_back_kick.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=50"
+      ],
+      "suggested_contact_seconds": [
+        0.5333333333333333
+      ],
+      "root_motion": "In place: horizontal pelvis translation removed; vertical jumps/falls preserved. Move displacement belongs to the engine.",
+      "group": "combos-20260924",
+      "contact_frames": [
+        17
+      ],
+      "contact_frame_convention": "1-based at 30 fps; t=(frame-1)/30",
+      "retime": [
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          29
+        ],
+        [
+          45,
+          61
+        ]
+      ],
+      "substitution": null,
+      "revision": "7f10b21e18f0"
+    },
+    {
+      "name": "flurry",
+      "file": "flurry.glb",
+      "fbx": "flurry.fbx",
+      "duration": 2.6333333333333333,
+      "fps": 30,
+      "frames": 80,
+      "loop": false,
+      "description": "Eight Punch Combo (Combo Punch)",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_flurry.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=50",
+        "source-character=elon_musk",
+        "retarget-to=sam_altman"
+      ],
+      "suggested_contact_seconds": [
+        0.43333333333333335,
+        0.6333333333333333,
+        0.8333333333333334,
+        1.0333333333333334,
+        1.2333333333333334,
+        1.4333333333333333,
+        1.6333333333333333,
+        1.8333333333333333
+      ],
+      "root_motion": "In place: horizontal pelvis translation removed; vertical jumps/falls preserved. Move displacement belongs to the engine.",
+      "group": "combos-20260924",
+      "contact_frames": [
+        14,
+        20,
+        26,
+        32,
+        38,
+        44,
+        50,
+        56
+      ],
+      "contact_frame_convention": "1-based at 30 fps; t=(frame-1)/30",
+      "retime": [
+        [
+          0,
+          0
+        ],
+        [
+          13,
+          11
+        ],
+        [
+          19,
+          19
+        ],
+        [
+          25,
+          29
+        ],
+        [
+          31,
+          37
+        ],
+        [
+          37,
+          50
+        ],
+        [
+          43,
+          57
+        ],
+        [
+          49,
+          65
+        ],
+        [
+          55,
+          71
+        ],
+        [
+          79,
+          89
+        ]
+      ],
+      "substitution": "Eight Punch Combo, retargeted from Elon to Sam; lead-lead, rear-rear, then alternating punches.",
+      "revision": "8b40303008b0"
+    },
+    {
+      "name": "get_up",
+      "file": "get_up.glb",
+      "fbx": "get_up.fbx",
+      "duration": 2.1666666666666665,
+      "fps": 30,
+      "frames": 66,
+      "loop": false,
+      "description": "Getting Up From Back",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_get_up.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=50",
+        "injury-level=0",
+        "get-up=50"
+      ],
+      "suggested_contact_seconds": [],
+      "root_motion": "In place: horizontal pelvis translation removed; vertical jumps/falls preserved. Move displacement belongs to the engine.",
+      "group": "combos-20260924",
+      "contact_frames": [],
+      "contact_frame_convention": "1-based at 30 fps; t=(frame-1)/30",
+      "retime": [
+        [
+          0,
+          60
+        ],
+        [
+          53,
+          209
+        ],
+        [
+          65,
+          220
+        ]
+      ],
+      "substitution": null,
+      "revision": "06f255529108"
+    },
+    {
+      "name": "stagger",
+      "file": "stagger.glb",
+      "fbx": "stagger.fbx",
+      "duration": 1.1666666666666667,
+      "fps": 30,
+      "frames": 36,
+      "loop": false,
+      "description": "Receiving A Big Hit From A Straight Punch (Big Hit To Head)",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_stagger.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=50",
+        "substitute=big-hit-reaction-for-stagger"
+      ],
+      "suggested_contact_seconds": [],
+      "root_motion": "In place: horizontal pelvis translation removed; vertical jumps/falls preserved. Move displacement belongs to the engine.",
+      "group": "combos-20260924",
+      "contact_frames": [],
+      "contact_frame_convention": "1-based at 30 fps; t=(frame-1)/30",
+      "retime": [
+        [
+          0,
+          0
+        ],
+        [
+          35,
+          39
+        ]
+      ],
+      "substitution": "Big Hit To Head: recoil reaction, rather than a dedicated two-step stagger",
+      "revision": "ccfb4ee18151"
+    },
+    {
+      "name": "rage_hit",
+      "file": "rage_hit.glb",
+      "fbx": "rage_hit.fbx",
+      "duration": 2.3666666666666667,
+      "fps": 30,
+      "frames": 72,
+      "loop": false,
+      "description": "Male Knocked Down From A Punch",
+      "source": "Adobe Mixamo",
+      "source_file": "../mixamo-source/sam_rage_hit.fbx",
+      "settings": [
+        "arm-space=48",
+        "overdrive=55"
+      ],
+      "suggested_contact_seconds": [],
+      "root_motion": "In place: horizontal pelvis translation removed; vertical jumps/falls preserved. Move displacement belongs to the engine.",
+      "group": "combos-20260924",
+      "contact_frames": [],
+      "contact_frame_convention": "1-based at 30 fps; t=(frame-1)/30",
+      "retime": [
+        [
+          0,
+          0
+        ],
+        [
+          71,
+          58
+        ]
+      ],
+      "substitution": "Retimed existing Stunned / Male Knocked Down From A Punch, expressly allowed by brief",
+      "revision": "16ab4101c3c5"
+    },
+    {
+      "name": "victory",
+      "file": "victory.glb",
+      "fbx": "victory.fbx",
+      "duration": 3.2,
+      "fps": 30,
+      "frames": 97,
+      "loop": false,
+      "hold_last_frame": true,
+      "hold_start_frame": 79,
+      "description": "Quiet control: guard release, shoulder roll, camera nod, relaxed hold",
+      "source": "Adobe Mixamo retargeting + authored gesture composition and FK/IK cleanup",
+      "source_files": [
+        "../mixamo-source/sam_idle.fbx",
+        "../mixamo-source/sam_celebration_sigh.fbx"
+      ],
+      "source_motions": [
+        "Bouncing Boxing Idle",
+        "Sighing In Relief (Relieved Sigh)"
+      ],
+      "group": "celebrations-20260924",
+      "beats": {
+        "shoulder_roll": 32,
+        "nod": 66
+      },
+      "opening": "Exact first idle.glb pose",
+      "root_motion": "In place; constant horizontal pelvis; +Z initial facing; body turn retained for Sam match victory",
+      "revision": "e1b4bc5bfc19"
+    },
+    {
+      "name": "victory_match",
+      "file": "victory_match.glb",
+      "fbx": "victory_match.fbx",
+      "duration": 5.7,
+      "fps": 30,
+      "frames": 172,
+      "loop": false,
+      "hold_last_frame": true,
+      "hold_start_frame": 154,
+      "description": "Composed salute: shoulder roll, two-finger salute, stationary half-turn and over-shoulder glance",
+      "source": "Adobe Mixamo retargeting + authored gesture composition and FK/IK cleanup",
+      "source_files": [
+        "../mixamo-source/sam_idle.fbx",
+        "../mixamo-source/sam_celebration_sigh.fbx",
+        "../mixamo-source/sam_celebration_salute.fbx",
+        "../mixamo-source/sam_celebration_turn.fbx"
+      ],
+      "source_motions": [
+        "Bouncing Boxing Idle",
+        "Sighing In Relief (Relieved Sigh)",
+        "Formal Military Salute (Salute)",
+        "Standing 180 Left Turn (Left Turn)"
+      ],
+      "group": "celebrations-20260924",
+      "beats": {
+        "shoulder_roll": 32,
+        "salute": 76,
+        "turn": 124,
+        "glance": 148
+      },
+      "opening": "Exact first idle.glb pose",
+      "root_motion": "In place; constant horizontal pelvis; +Z initial facing; body turn retained for Sam match victory",
+      "revision": "becba76a12b8"
+    }
+  ]
+}

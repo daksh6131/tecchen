@@ -1,0 +1,22 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Portrait render</title>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+<body style="margin:0;background:#222;color:#ddd;font:14px monospace">
+<pre id="log">rendering…</pre>
+<script type="module">
+  import { renderPortrait, saveBlob } from './src3d/portrait.js';
+  import { ROSTER } from './src3d/roster.js';
+  const log = (t) => { document.getElementById('log').textContent += '\n' + t; };
+  const params = new URLSearchParams(location.search);
+  const only = params.get('id');
+  window.__done = false;
+  for (const c of Object.values(ROSTER)) {
+    if (only && c.id !== only) continue;
+    const blob = await renderPortrait({ url: c.model, height: c.height, accent: c.accent, turn: +(params.get('turn') ?? 0.42), zoom: +(params.get('zoom') ?? 1), tilt: +(params.get('tilt') ?? 0.06), look: +(params.get('look') ?? -0.10), exposure: +(params.get('exp') ?? 0.82) });
+    const img = document.createElement('img'); img.src = URL.createObjectURL(blob); img.style.width = '256px'; img.style.background = '#000'; document.body.appendChild(img);
+    log(await saveBlob(`assets/pfp/${c.id}_hud.png`, blob));
+  }
+  window.__done = true;
+</script>
+</body>

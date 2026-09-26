@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Celebration integration checks</title>
+<style>body{background:#14191f;color:#e2eee5;font:16px system-ui;padding:32px;line-height:1.7}.pass{color:#ace3b5}.fail{color:#ffb4ab}</style>
+<h1>Celebration integration checks</h1><p id="status">Loading the production character rigs and manifests…</p><ol id="results"></ol>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+<script type="module">
+import {createHumanoid} from '../src3d/humanoid.js';
+import {createRound,EMPTY_INPUT} from '../src3d/sim.js';
+const status=document.getElementById('status');
+function check(condition,message){if(!condition)throw new Error(message);const row=document.createElement('li');row.className='pass';row.textContent='PASS — '+message;document.getElementById('results').append(row);}
+try{
+ const round=createRound({rng:()=>.99});round.p2.health=1;round.p2.x=round.p1.x+60;
+ let ko;
+ for(let i=0;i<60&&!ko;i++)ko=round.step(1/60,i===0?{...EMPTY_INPUT,hp:true,pressed:{hp:true}}:EMPTY_INPUT,EMPTY_INPUT).find(e=>e.type==='ko');
+ check(ko?.outcome==='p1'&&!round.koSettled,'A combat hit produces K.O. before the slow-motion settling window ends');
+ for(let i=0;i<120;i++)round.step(1/60,EMPTY_INPUT,EMPTY_INPUT);
+ check(round.koSettled,'K.O. settles before celebration playback');
+ for(const [char,ident,height] of [['sam','sam_altman',1.8],['elon','elon_musk',1.92]]){
+  const base=new URL(`../character-models%202/`,import.meta.url);
+  const rig=await createHumanoid({url:new URL(`models/${ident}.glb`,base).href,height,targetHeight:height,clips:new URL(`anims/${char}`,base).href});
+  await rig.clipsPromise;
+  check(rig.clipsReady&&rig.hasClip('victory')&&rig.hasClip('victory_match'),`${char}: production manifest loads both new clips`);
+  rig.animate({state:'idle',stateSerial:0});rig.tick(.1);
+  for(const [matchWin,expected,seconds] of [[false,'victory',3.6],[true,'victory_match',6.2]]){
+   rig.animate({state:'victory',stateSerial:expected,matchWin});
+   check(rig.clipName===expected,`${char}: ${matchWin?'match':'round'} winner selects ${expected}`);
+   for(let i=0;i<Math.ceil(seconds*60);i++)rig.tick(1/60);
+   const time=rig.clipTime;const held=Object.values(rig.bones).map(b=>({q:b.quaternion.clone(),p:b.position.clone()}));
+   for(let i=0;i<120;i++){rig.animate({state:'victory',stateSerial:expected,matchWin});rig.tick(1/60);}
+   const timeError=Math.abs(rig.clipTime-time);
+   const rotationError=Math.max(...Object.values(rig.bones).map((b,i)=>b.quaternion.clone().normalize().angleTo(held[i].q.clone().normalize())));
+   const positionError=Math.max(...Object.values(rig.bones).map((b,i)=>b.position.distanceTo(held[i].p)));
+   check(timeError<1e-6&&rotationError<1e-5&&positionError<1e-6,`${char}: ${expected} finishes and holds without restarting (time Δ ${timeError.toExponential(1)}, rotation Δ ${rotationError.toExponential(1)}, position Δ ${positionError.toExponential(1)})`);
+  }
+ }
+ status.textContent='ALL PASSED — settled K.O., four production clips selected, four ending poses held.';status.className='pass';
+}catch(error){status.textContent='FAILED — '+error.message;status.className='fail';console.error(error);}
+</script></html>

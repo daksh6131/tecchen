@@ -1,0 +1,559 @@
+{
+  "passed": true,
+  "clips": 60,
+  "checks": [
+    "GLB container integrity",
+    "Canonical clip name",
+    "53 target-rig bones",
+    "Finite keyframes",
+    "Unit quaternions",
+    "Increasing keyframe times",
+    "Manifest duration",
+    "Loop horizontal drift <1mm",
+    "Combo pelvis horizontal motion <1mm",
+    "Combo frame and contact counts",
+    "Companion binary FBX"
+  ],
+  "results": [
+    {
+      "character": "sam",
+      "clip": "idle",
+      "duration": 1.9,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "walk",
+      "duration": 0.833,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "walk_back",
+      "duration": 0.733,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "run",
+      "duration": 0.6,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "jab",
+      "duration": 1.367,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "cross",
+      "duration": 1.733,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "hook",
+      "duration": 1.1,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "uppercut",
+      "duration": 1.833,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "roundhouse",
+      "duration": 1.233,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "snap_kick",
+      "duration": 1.267,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "sweep",
+      "duration": 1.4,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "flying_kick",
+      "duration": 0.533,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "block",
+      "duration": 1.433,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "head_hit",
+      "duration": 1.067,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "body_hit",
+      "duration": 0.833,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "knocked_down",
+      "duration": 1.933,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "crouch",
+      "duration": 2.167,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "jump",
+      "duration": 1.933,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "low_kick",
+      "duration": 1.1,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "high_roundhouse",
+      "duration": 1.3,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "body_jab",
+      "duration": 1.033,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "elbow",
+      "duration": 1.233,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "hop_kick",
+      "duration": 1.433,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "spin_back_kick",
+      "duration": 1.5,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "flurry",
+      "duration": 2.633,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "get_up",
+      "duration": 2.167,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "stagger",
+      "duration": 1.167,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "rage_hit",
+      "duration": 2.367,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "victory",
+      "duration": 3.2,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "sam",
+      "clip": "victory_match",
+      "duration": 5.7,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "idle",
+      "duration": 2.5,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "walk",
+      "duration": 1.067,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "walk_back",
+      "duration": 0.867,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "run",
+      "duration": 0.867,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "jab",
+      "duration": 1.833,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "cross",
+      "duration": 2.233,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "hook",
+      "duration": 2.267,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "uppercut",
+      "duration": 2.3,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "roundhouse",
+      "duration": 1.767,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "snap_kick",
+      "duration": 1.7,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "sweep",
+      "duration": 1.833,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "flying_kick",
+      "duration": 0.7,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "block",
+      "duration": 1.867,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "head_hit",
+      "duration": 0.933,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "body_hit",
+      "duration": 1.2,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "knocked_down",
+      "duration": 2.233,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "crouch",
+      "duration": 2.633,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "jump",
+      "duration": 2.467,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "hammer_fist",
+      "duration": 1.433,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "knee",
+      "duration": 1.233,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "stomp",
+      "duration": 1.3,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "haymaker",
+      "duration": 1.833,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "shoulder_tackle",
+      "duration": 1.567,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "spin_back_kick",
+      "duration": 1.567,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "ground_pound",
+      "duration": 2.167,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "get_up",
+      "duration": 2.3,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "stagger",
+      "duration": 1.3,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "rage_hit",
+      "duration": 2.567,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "victory",
+      "duration": 3.3,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    },
+    {
+      "character": "elon",
+      "clip": "victory_match",
+      "duration": 5.7,
+      "animated_bones": 53,
+      "channels": 159,
+      "finite": true,
+      "matched": true
+    }
+  ]
+}

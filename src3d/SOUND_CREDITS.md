@@ -1,0 +1,82 @@
+# Sound credits
+
+All clips are CC0 from Freesound and are streamed at runtime from cdn.freesound.org.
+
+- 5_Heavy_Breath.wav by mariiao2 (freesound.org/s/238495) — CC0
+- Aagh - Male by Huminaatio (freesound.org/s/219073) — CC0
+- BODY FALL - V HVY - DIRT by leonelmail (freesound.org/s/504626) — CC0
+- Basic Melee Swing / Miss / Whoosh by SypherZent (freesound.org/s/420668) — CC0
+- Big impact.wav by AudioPapkin (freesound.org/s/430977) — CC0
+- Block.mp3 by FlameEagle (freesound.org/s/131142) — CC0
+- Blocking Arm With Hand by mmasonghi (freesound.org/s/321810) — CC0
+- Body Wall Impact.wav by jawbutch (freesound.org/s/344402) — CC0
+- Body fall_02.wav by deleted_user_2104797 (freesound.org/s/346694) — CC0
+- Bone Cracking.wav by bewareofkites20 (freesound.org/s/147993) — CC0
+- Bones Crack 2.wav by Kane53126 (freesound.org/s/257927) — CC0
+- Clean fast Swoosh.aiff by Danjocross (freesound.org/s/507466) — CC0
+- Death sound (male) by Replix (freesound.org/s/173126) — CC0
+- Deep Gong Tolling.mp3 by Yin_Yang_Jake007 (freesound.org/s/415200) — CC0
+- Falling body hits the floor by courtneyeck (freesound.org/s/673424) — CC0
+- Fighting Game Hit Sound by grizzlymittz (freesound.org/s/529942) — CC0
+- GROANING.wav by vmgraw (freesound.org/s/257706) — CC0
+- GRUNT 1.wav by vmgraw (freesound.org/s/257710) — CC0
+- GRUNT 2.wav by vmgraw (freesound.org/s/257709) — CC0
+- Gong.wav by Yin_Yang_Jake007 (freesound.org/s/406109) — CC0
+- Group Ooh Aah by CHallSmith (freesound.org/s/870652) — CC0
+- Grunt by nomiqbomi (freesound.org/s/578788) — CC0
+- Hard Swing 1 by magnuswaker (freesound.org/s/523230) — CC0
+- Hurt  1 - (Male) by Christopherderp (freesound.org/s/342229) — CC0
+- Hurt 2 - (Male) by Christopherderp (freesound.org/s/342230) — CC0
+- Hurt 3 - (Male) by Christopherderp (freesound.org/s/342231) — CC0
+- Low impact.wav by AudioPapkin (freesound.org/s/430978) — CC0
+- MAN SCREAM by queen_westeros (freesound.org/s/222582) — CC0
+- Male Attack Grunt by elynch0901 (freesound.org/s/464485) — CC0
+- Male Death 4 by scorpion67890 (freesound.org/s/396801) — CC0
+- Male Death Sound by Blankened (freesound.org/s/554443) — CC0
+- Male Grunting In Pain by elynch0901 (freesound.org/s/464486) — CC0
+- Male grunt.MP3 by SoundsForHim (freesound.org/s/399626) — CC0
+- Oof (original) by unfa (freesound.org/s/719053) — CC0
+- Ouch.wav by ajanhallinta (freesound.org/s/649543) — CC0
+- PUNCH-BOXING-03.wav by newagesoup (freesound.org/s/348242) — CC0
+- PlayerHurt1 by mrickey13 (freesound.org/s/515623) — CC0
+- PlayerHurt2 by mrickey13 (freesound.org/s/515624) — CC0
+- Punch (1) by johnfolker (freesound.org/s/269233) — CC0
+- Punch 2 - Heavy.ogg by steveuk87 (freesound.org/s/490769) — CC0
+- Punch Hard 1 by magnuswaker (freesound.org/s/524950) — CC0
+- Punch Hard 2 by magnuswaker (freesound.org/s/524956) — CC0
+- Punch by danlucaz (freesound.org/s/517744) — CC0
+- Punch in the face by Huminaatio (freesound.org/s/390462) — CC0
+- Punch/Kick Being Blocked 2 by elynch0901 (freesound.org/s/464499) — CC0
+- Punch/Kick Being Blocked by elynch0901 (freesound.org/s/464498) — CC0
+- Punching-005.wav by kretopi (freesound.org/s/406464) — CC0
+- R07-01-Crowd Cheering at Sporting Event.wav by craigsmith (freesound.org/s/486202) — CC0
+- R07-13-Crowd and Boxing Bell.wav by craigsmith (freesound.org/s/486210) — CC0
+- Realistic Punch by JewTwinz (freesound.org/s/244513) — CC0
+- RoaringCrowd.wav by benfree (freesound.org/s/130568) — CC0
+- SnapPunchCatch.mp3 by RandomWizKid (freesound.org/s/706116) — CC0
+- Strong Melee Swing by SypherZent (freesound.org/s/420670) — CC0
+- Sub Drop Smooth.wav by newagesoup (freesound.org/s/428073) — CC0
+- Swing Woosh by Jofae (freesound.org/s/389590) — CC0
+- Synth Bass Drop Impact by AlexLane (freesound.org/s/475005) — CC0
+- Thud / Falling on wooden floor / Snapping, breaking neck by Breviceps (freesound.org/s/447922) — CC0
+- Very low frequency impact.wav by AudioPapkin (freesound.org/s/541029) — CC0
+- Victim Screaming by qubodup (freesound.org/s/813310) — CC0
+- Vocal Man Hit 'Ohhh'.aif by RutgerMuller (freesound.org/s/50924) — CC0
+- Voice_AdultMale_PainGrunts_09.wav by MrFossy (freesound.org/s/547209) — CC0
+- Whoosh #1 by Kinoton (freesound.org/s/427823) — CC0
+- Wounded man scream by joseppujol (freesound.org/s/221544) — CC0
+- body_hit.wav by insanity54 (freesound.org/s/276600) — CC0
+- groan by adam.wav by seachangeau (freesound.org/s/387153) — CC0
+- human male scream 5 by JohnsonBrandEditing (freesound.org/s/243382) — CC0
+- male_hurt9.ogg by micahlg (freesound.org/s/413186) — CC0
+
+## Vocal pools (refreshed 2026-09-25, all CC0)
+- micahlg — male_hurt1…14 (Freesound pack 23282)
+- MrFossy — Voice_AdultMale_PainGrunts_01…12 (pack 30826)
+- Christopherderp — Hurt 1/2/3 (Male) 342229–342231
+- BranndyBottle — MaleGrunt1–3, MaleDeepGrunt1–3, *_full 4646xx
+- vmgraw — GRUNT 1/2 257709–257710, GROANING 257706
+- K27K_Mike — MC Hurt 1–4 853660–853663
+- arther1974 — jump_grunt_01–03 808213–808216
+- elynch0901 — Male Attack Grunt 464485, Male Grunting In Pain 464486
+- RedSwan_Studios — Player Hurt 3 678594; iampatrick — Video Game Character Grunt 839522; unfa — Oof 719053; nomiqbomi — Grunt 578788; _MokeyMokey — VO_Grunt 3 788783

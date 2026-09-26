@@ -1,0 +1,289 @@
+{
+  "passed": true,
+  "fps": 30,
+  "frame_convention": "1-based; t=(frame-1)/30",
+  "method": "Forward bone extension for strikes; downward contact for stomp and ground pound. Local extrema within the strike phase, tolerance 3 frames. Visual contact poses also reviewed; opponent/hitbox contacts remain engine-dependent.",
+  "results": [
+    {
+      "character": "sam",
+      "clip": "low_kick",
+      "frames": 34,
+      "contacts": [
+        {
+          "bone": "foot_r",
+          "contact_frame": 11,
+          "measured_extreme_frame": 11,
+          "error_frames": 0,
+          "contact_height_m": 0.633
+        }
+      ]
+    },
+    {
+      "character": "sam",
+      "clip": "high_roundhouse",
+      "frames": 40,
+      "contacts": [
+        {
+          "bone": "foot_r",
+          "contact_frame": 13,
+          "measured_extreme_frame": 13,
+          "error_frames": 0,
+          "contact_height_m": 1.516
+        }
+      ]
+    },
+    {
+      "character": "sam",
+      "clip": "body_jab",
+      "frames": 32,
+      "contacts": [
+        {
+          "bone": "hand_l",
+          "contact_frame": 10,
+          "measured_extreme_frame": 10,
+          "error_frames": 0,
+          "contact_height_m": 0.764
+        }
+      ]
+    },
+    {
+      "character": "sam",
+      "clip": "elbow",
+      "frames": 38,
+      "contacts": [
+        {
+          "bone": "lowerarm_r",
+          "contact_frame": 13,
+          "measured_extreme_frame": 13,
+          "error_frames": 0,
+          "contact_height_m": 1.106
+        }
+      ]
+    },
+    {
+      "character": "sam",
+      "clip": "hop_kick",
+      "frames": 44,
+      "contacts": [
+        {
+          "bone": "foot_l",
+          "contact_frame": 13,
+          "measured_extreme_frame": 13,
+          "error_frames": 0,
+          "contact_height_m": 1.563
+        }
+      ]
+    },
+    {
+      "character": "sam",
+      "clip": "spin_back_kick",
+      "frames": 46,
+      "contacts": [
+        {
+          "bone": "foot_r",
+          "contact_frame": 17,
+          "measured_extreme_frame": 17,
+          "error_frames": 0,
+          "contact_height_m": 1.56
+        }
+      ]
+    },
+    {
+      "character": "sam",
+      "clip": "flurry",
+      "frames": 80,
+      "contacts": [
+        {
+          "bone": "hand_l",
+          "contact_frame": 14,
+          "measured_extreme_frame": 14,
+          "error_frames": 0,
+          "contact_height_m": 1.466
+        },
+        {
+          "bone": "hand_l",
+          "contact_frame": 20,
+          "measured_extreme_frame": 20,
+          "error_frames": 0,
+          "contact_height_m": 1.496
+        },
+        {
+          "bone": "hand_r",
+          "contact_frame": 26,
+          "measured_extreme_frame": 26,
+          "error_frames": 0,
+          "contact_height_m": 1.468
+        },
+        {
+          "bone": "hand_r",
+          "contact_frame": 32,
+          "measured_extreme_frame": 32,
+          "error_frames": 0,
+          "contact_height_m": 1.497
+        },
+        {
+          "bone": "hand_l",
+          "contact_frame": 38,
+          "measured_extreme_frame": 38,
+          "error_frames": 0,
+          "contact_height_m": 1.194
+        },
+        {
+          "bone": "hand_r",
+          "contact_frame": 44,
+          "measured_extreme_frame": 44,
+          "error_frames": 0,
+          "contact_height_m": 1.211
+        },
+        {
+          "bone": "hand_l",
+          "contact_frame": 50,
+          "measured_extreme_frame": 50,
+          "error_frames": 0,
+          "contact_height_m": 1.226
+        },
+        {
+          "bone": "hand_r",
+          "contact_frame": 56,
+          "measured_extreme_frame": 56,
+          "error_frames": 0,
+          "contact_height_m": 1.247
+        }
+      ]
+    },
+    {
+      "character": "sam",
+      "clip": "get_up",
+      "frames": 66,
+      "contacts": []
+    },
+    {
+      "character": "sam",
+      "clip": "stagger",
+      "frames": 36,
+      "contacts": []
+    },
+    {
+      "character": "sam",
+      "clip": "rage_hit",
+      "frames": 72,
+      "contacts": []
+    },
+    {
+      "character": "elon",
+      "clip": "hammer_fist",
+      "frames": 44,
+      "contacts": [
+        {
+          "bone": "hand_l",
+          "contact_frame": 15,
+          "measured_extreme_frame": 15,
+          "error_frames": 0,
+          "contact_height_m": 0.889
+        }
+      ]
+    },
+    {
+      "character": "elon",
+      "clip": "knee",
+      "frames": 38,
+      "contacts": [
+        {
+          "bone": "calf_r",
+          "contact_frame": 13,
+          "measured_extreme_frame": 13,
+          "error_frames": 0,
+          "contact_height_m": 1.1
+        }
+      ]
+    },
+    {
+      "character": "elon",
+      "clip": "stomp",
+      "frames": 40,
+      "contacts": [
+        {
+          "bone": "foot_r",
+          "contact_frame": 15,
+          "measured_extreme_frame": 15,
+          "error_frames": 0,
+          "contact_height_m": 0.096
+        }
+      ]
+    },
+    {
+      "character": "elon",
+      "clip": "haymaker",
+      "frames": 56,
+      "contacts": [
+        {
+          "bone": "hand_l",
+          "contact_frame": 22,
+          "measured_extreme_frame": 22,
+          "error_frames": 0,
+          "contact_height_m": 1.459
+        }
+      ]
+    },
+    {
+      "character": "elon",
+      "clip": "shoulder_tackle",
+      "frames": 48,
+      "contacts": [
+        {
+          "bone": "upperarm_r",
+          "contact_frame": 17,
+          "measured_extreme_frame": 20,
+          "error_frames": 3,
+          "contact_height_m": 1.331
+        }
+      ]
+    },
+    {
+      "character": "elon",
+      "clip": "spin_back_kick",
+      "frames": 48,
+      "contacts": [
+        {
+          "bone": "foot_r",
+          "contact_frame": 18,
+          "measured_extreme_frame": 18,
+          "error_frames": 0,
+          "contact_height_m": 1.703
+        }
+      ]
+    },
+    {
+      "character": "elon",
+      "clip": "ground_pound",
+      "frames": 66,
+      "contacts": [
+        {
+          "bone": "hand_l",
+          "contact_frame": 26,
+          "measured_extreme_frame": 27,
+          "error_frames": 1,
+          "contact_height_m": 0.042
+        }
+      ]
+    },
+    {
+      "character": "elon",
+      "clip": "get_up",
+      "frames": 70,
+      "contacts": []
+    },
+    {
+      "character": "elon",
+      "clip": "stagger",
+      "frames": 40,
+      "contacts": []
+    },
+    {
+      "character": "elon",
+      "clip": "rage_hit",
+      "frames": 78,
+      "contacts": []
+    }
+  ]
+}
