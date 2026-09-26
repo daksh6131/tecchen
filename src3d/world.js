@@ -355,7 +355,9 @@ async function buildOctagon(group, { models }) {
   group.add(inner);
   // raised platform edge under the mat
   const plat = new THREE.Mesh(new THREE.CylinderGeometry(R + 0.9, R + 1.1, 0.5, N, 1, false, Math.PI / N), new THREE.MeshPhysicalMaterial({ color: 0x0d0d10, roughness: 0.4, clearcoat: 0.6 }));
-  plat.position.y = -0.25;
+  // top face 2 cm below the mat: coplanar with the floor it z-fought into
+  // flickering stepped streaks whenever the camera moved
+  plat.position.y = -0.27;
   plat.receiveShadow = true;
   group.add(plat);
   // corner spot rigs above the cage
