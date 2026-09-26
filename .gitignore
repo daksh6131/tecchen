@@ -7,7 +7,6 @@
 !/package.json
 !/serve.py
 !/index.html
-!/classic.html
 !/.nojekyll
 !/tekken3d.html
 !/portrait.html
@@ -23,7 +22,6 @@
 /assets/*
 !/assets/logo/
 !/assets/pfp/
-!/assets/sprites/
 !/assets/stage_wide_*.jpg
 !/assets/stages_*.png
 
