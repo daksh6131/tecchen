@@ -246,6 +246,13 @@ export function createFX(scene) {
       pulse = 1; flash = 0.7;
     },
 
+    // Rage Art activation: white-out flash and a hard pulse, no sparks
+    rage(x, y, z, color) {
+      rings.burst(x, y, z, color, { size: 2.0, dur: 0.5 });
+      shakeT = Math.max(shakeT, 0.25); shakeMag = Math.max(shakeMag, 0.06);
+      pulse = 1; flash = 0.85;
+    },
+
     setBlob(i, x, y, z) {
       const b = blobs[i];
       b.position.x = x; b.position.z = z;

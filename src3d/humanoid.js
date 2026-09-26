@@ -30,7 +30,8 @@ const CALIB = { fore: -0.35, arm: 0.05 };
 
 // Clips whose pelvis motion the simulation already supplies.
 const STRIP_Y = new Set(['jump', 'flying_kick']);
-const STRIP_XZ = new Set(['jab', 'cross', 'hook', 'uppercut', 'roundhouse', 'snap_kick', 'sweep', 'flying_kick', 'walk', 'walk_back', 'run', 'head_hit', 'body_hit', 'block']);
+const STRIP_XZ = new Set(['jab', 'cross', 'hook', 'uppercut', 'roundhouse', 'snap_kick', 'sweep', 'flying_kick', 'walk', 'walk_back', 'run', 'head_hit', 'body_hit', 'block',
+  'low_kick', 'high_roundhouse', 'body_jab', 'elbow', 'hop_kick', 'spin_back_kick', 'flurry', 'hammer_fist', 'knee', 'stomp', 'haymaker', 'shoulder_tackle', 'ground_pound', 'stagger']);
 
 // Both the pelvis and Mixamo's animated armature root can carry travel.
 function stripPelvis(clip, name) {
@@ -151,7 +152,9 @@ export async function createHumanoid({ url, height, targetHeight = 1.72, clips =
       const clip = g.animations[0];
       clip.name = c.name;
       stripPelvis(clip, c.name);
-      clipCache.set(c.name, { clip, loop: !!c.loop, duration: c.duration });
+      // combo clips carry authored contact frames (1-based, 30 fps)
+      const markers = Array.isArray(c.contact_frames) ? c.contact_frames.map((f) => (f - 1) / 30) : null;
+      clipCache.set(c.name, { clip, loop: !!c.loop, duration: c.duration, markers });
     }));
     measureContacts();
     clipsReady = true;
@@ -165,6 +168,9 @@ export async function createHumanoid({ url, height, targetHeight = 1.72, clips =
   const EFFECTORS = {
     jab: ['hand_l', 'hand_r'], cross: ['hand_l', 'hand_r'], hook: ['hand_l', 'hand_r'], uppercut: ['hand_l', 'hand_r'],
     roundhouse: ['foot_l', 'foot_r'], snap_kick: ['foot_l', 'foot_r'], sweep: ['foot_l', 'foot_r'], flying_kick: ['foot_l', 'foot_r'],
+    low_kick: ['foot_l', 'foot_r'], high_roundhouse: ['foot_l', 'foot_r'], hop_kick: ['foot_l', 'foot_r'], spin_back_kick: ['foot_l', 'foot_r'], stomp: ['foot_l', 'foot_r'],
+    body_jab: ['hand_l', 'hand_r'], flurry: ['hand_l', 'hand_r'], hammer_fist: ['hand_l', 'hand_r'], haymaker: ['hand_l', 'hand_r'], ground_pound: ['hand_l', 'hand_r'],
+    elbow: ['lowerarm_l', 'lowerarm_r'], knee: ['calf_l', 'calf_r'], shoulder_tackle: ['upperarm_l', 'upperarm_r'],
   };
   function measureContacts() {
     const inv = new THREE.Matrix4();
@@ -203,7 +209,8 @@ export async function createHumanoid({ url, height, targetHeight = 1.72, clips =
       }
       let reachM = 0;
       for (let i = 0; i < curve.length; i++) reachM = Math.max(reachM, curve[i]);
-      contacts[name] = { duration: entry.duration, contact: bestT, peak: best, min: worst, curve, reachM };
+      const markers = entry.markers && entry.markers.length ? entry.markers : null;
+      contacts[name] = { duration: entry.duration, contact: markers ? markers[0] : bestT, contactsS: markers || [bestT], peak: best, min: worst, curve, reachM };
       action.stop();
     }
     const kd = clipCache.get('knocked_down');
@@ -250,6 +257,11 @@ export async function createHumanoid({ url, height, targetHeight = 1.72, clips =
   function animate(info) {
     if (!clipsReady) return false;
     const { state, dir = 1, hitHeight = 'high' } = info;
+    if (info.clip && clipCache.has(info.clip)) {
+      // string moves: the move's own clip at its fitted speed, synced to the sim clock
+      play(info.clip, { key: `${state}:${info.stateSerial}`, speed: info.clipSpeed || 1, fade: 0.06, sync: true });
+      return true;
+    }
     const atk = attackClips[state];
     if (atk) {
       // synced: the clip time is the sim's state clock × speed, so the frame at the hit event is exact
@@ -271,6 +283,23 @@ export async function createHumanoid({ url, height, targetHeight = 1.72, clips =
         break;
       }
       case 'ko': play('knocked_down', { key: `ko:${info.stateSerial}`, speed: 1.0, fade: 0.05, sync: true }); break;
+      case 'knockdown':
+      case 'down': {
+        // one fall per knockdown: the clip carries on through the landing and holds its last frame
+        const name = clipCache.has(info.fallClip) ? info.fallClip : 'knocked_down';
+        play(name, { key: `fall:${info.fallSerial}`, speed: name === 'rage_hit' ? 1.1 : 1.35, fade: 0.05, loop: false });
+        break;
+      }
+      case 'getup': {
+        const d = clipCache.get('get_up')?.duration || 2.2;
+        play('get_up', { key: `getup:${info.stateSerial}`, speed: d / (info.getupS || 0.97), fade: 0.12, sync: true });
+        break;
+      }
+      case 'stagger': {
+        const d = clipCache.get('stagger')?.duration || 1.2;
+        play('stagger', { key: `stagger:${info.stateSerial}`, speed: d / (info.staggerS || 0.57), fade: 0.05, sync: true });
+        break;
+      }
       case 'victory': {
         // round win: the character's signature celebration, holding its final pose;
         // a longer match-win variant is used when the pack provides one
@@ -292,6 +321,15 @@ export async function createHumanoid({ url, height, targetHeight = 1.72, clips =
     clipsPromise,
     contacts,
     get clipsReady() { return clipsReady; },
+    // { clip: { duration, contacts: [s] } } for strings.buildStringMoves
+    clipInfo() {
+      const out = {};
+      for (const [name, e] of clipCache) {
+        const c = contacts[name];
+        out[name] = { duration: e.duration, contacts: e.markers && e.markers.length ? e.markers : (c ? c.contactsS : []), reachM: c ? c.reachM : 0 };
+      }
+      return out;
+    },
 
     // facing + sim-driven height; in pose mode also writes the bones
     setPose(pose, facing, ctx = {}) {

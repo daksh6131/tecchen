@@ -6,6 +6,10 @@ import { Fighter } from '../src/fighter.js';
 import { CHARACTERS } from '../src/characters.js';
 import { resolve } from '../src/combat.js';
 import { createAI } from '../src/ai.js';
+import { Fighter3D } from './fighter3d.js';
+import { resolve3d } from './combat3d.js';
+import { createAI3d } from './ai3d.js';
+import { F } from './strings.js';
 
 export const EMPTY_INPUT = Object.freeze({
   left: false, right: false, up: false, down: false,
@@ -27,7 +31,7 @@ export function roundOutcome(p1, p2) {
 export function threat(defender, attacker) {
   const m = attacker.moves[attacker.state];
   if (!m) return false;
-  if (attacker.stateClock >= m.startupMs + m.activeMs) return false;
+  if (attacker.stateClock >= (m.activeEndMs ?? m.startupMs + m.activeMs)) return false;
   return Math.abs(attacker.x - defender.x) < m.reach + 80;
 }
 
@@ -41,13 +45,40 @@ function clampToStage(f) {
 export function createRound({ p1Id = 'dario', p2Id = 'sam', chars = null, cpuHandicap = 0, minGap = null, rng = Math.random } = {}) {
   const c1 = chars ? chars[0] : CHARACTERS[p1Id];
   const c2 = chars ? chars[1] : CHARACTERS[p2Id];
-  const p1 = new Fighter({ characterId: p1Id, x: 320, facing: 1, stats: c1.stats, moves: c1.moves });
-  const p2 = new Fighter({ characterId: p2Id, x: 640, facing: -1, stats: c2.stats, moves: c2.moves });
-  const cpu = createAI(p2, p1, rng);
+  // roster characters with string tables get the string fighter, resolver and CPU
+  const strings = !!(c1.strings && c2.strings);
+  const make = (c, id, x, facing) => (strings
+    ? new Fighter3D({ characterId: c.id || id, x, facing, stats: c.stats, moves: c.moves, strings: c.strings })
+    : new Fighter({ characterId: id, x, facing, stats: c.stats, moves: c.moves }));
+  const p1 = make(c1, p1Id, 320, 1);
+  const p2 = make(c2, p2Id, 640, -1);
+  const cpu = strings ? createAI3d(p2, p1, c2.id, rng) : createAI(p2, p1, rng);
+  const resolveHit = strings ? resolve3d : resolve;
 
-  const combos = { p1: { hits: 0, t: 0, damage: 0 }, p2: { hits: 0, t: 0, damage: 0 } };
+  const combos = { p1: { hits: 0, t: 0, damage: 0, name: null, counter: false }, p2: { hits: 0, t: 0, damage: 0, name: null, counter: false } };
   let outcome = null;
   let freezeT = 0;
+  // button presses made during hit-stop are delivered on the first free frame,
+  // so a follow-up pressed as the hit connects is not lost
+  // (with the directions held at the moment of the press, so d+3 stays d+3)
+  const DIRS = ['left', 'right', 'up', 'down'];
+  const held = { p1: null, p2: null };
+  const keep = (k, inp) => {
+    if (!inp || !inp.pressed) return;
+    const btns = Object.keys(inp.pressed).filter((b) => inp.pressed[b] && !DIRS.includes(b));
+    if (!btns.length) return;
+    const h = held[k] || (held[k] = { pressed: {}, dirs: {} });
+    for (const b of btns) h.pressed[b] = true;
+    for (const d of DIRS) if (inp[d]) h.dirs[d] = true;
+  };
+  const release = (k, inp) => {
+    const h = held[k];
+    if (!h || !inp) return inp;
+    held[k] = null;
+    const out = { ...inp, ...h.dirs, pressed: { ...(inp.pressed || {}), ...h.pressed } };
+    for (const b of Object.keys(h.pressed)) out[b] = true;
+    return out;
+  };
   let koT = 0;
   let elapsed = 0;
 
@@ -73,24 +104,29 @@ export function createRound({ p1Id = 'dario', p2Id = 'sam', chars = null, cpuHan
     const iy = defender.y - (r.height === 'low' ? 30 : 92);
     if (r.blocked) {
       combo.hits = 0;
-      freezeT = Math.max(freezeT, 0.045);
+      freezeT = Math.max(freezeT, r.stopF ? r.stopF * F / 1000 : 0.045);
       events.push({ type: 'block', x: ix, y: iy, attacker: key, damage: r.damage });
       return;
     }
-    combo.hits = wasVulnerable ? combo.hits + 1 : 1;
-    combo.damage = wasVulnerable ? combo.damage + r.damage : r.damage;
+    const fresh = !wasVulnerable || combo.hits === 0;
+    combo.hits = fresh ? 1 : combo.hits + 1;
+    combo.damage = fresh ? r.damage : combo.damage + r.damage;
+    if (fresh) { combo.name = r.string || null; combo.counter = !!r.counter; }
     combo.t = 1.1;
-    const heavy = r.damage >= 9;
-    freezeT = Math.max(freezeT, heavy ? 0.095 : 0.06);
+    const heavy = r.damage >= 9 || !!r.ender;
+    freezeT = Math.max(freezeT, r.stopF ? r.stopF * F / 1000 : (heavy ? 0.095 : 0.06));
     events.push({
       type: 'hit', x: ix, y: iy, attacker: key, damage: r.damage,
       heavy, launched: !!r.launched, combo: combo.hits, height: r.height,
+      counter: !!r.counter, knockdown: !!r.knockdown, bound: !!r.bound, stagger: !!r.stagger,
+      ender: !!r.ender, rageFinish: !!r.rageFinish, string: r.string || null,
     });
   }
 
   function flags(events, f, key) {
     if (f._whiffed) { f._whiffed = false; events.push({ type: 'whiff', who: key }); }
     if (f._landed) { f._landed = false; events.push({ type: 'land', who: key, x: f.x }); }
+    if (f._rageStarted) { f._rageStarted = false; events.push({ type: 'rage', who: key, x: f.x }); }
   }
 
   return {
@@ -106,7 +142,14 @@ export function createRound({ p1Id = 'dario', p2Id = 'sam', chars = null, cpuHan
       elapsed += dt;
       for (const c of Object.values(combos)) if (c.t > 0) c.t -= dt;
 
-      if (freezeT > 0) { freezeT -= dt; return events; }
+      if (freezeT > 0) {
+        freezeT -= dt;
+        keep('p1', p1Input);
+        if (p2Input) keep('p2', p2Input);
+        return events;
+      }
+      p1Input = release('p1', p1Input);
+      if (p2Input) p2Input = release('p2', p2Input);
 
       if (outcome) {
         if (koT > 0) {
@@ -122,8 +165,9 @@ export function createRound({ p1Id = 'dario', p2Id = 'sam', chars = null, cpuHan
 
       const t1 = threat(p1, p2);
       const t2 = threat(p2, p1);
-      const p2InCombo = p2.state === 'hitstun' || (!p2.grounded && p2.state !== 'jump');
-      const p1InCombo = p1.state === 'hitstun' || (!p1.grounded && p1.state !== 'jump');
+      const hurt = (f) => f.state === 'hitstun' || f.state === 'stagger' || f.state === 'knockdown' || f.state === 'down' || (!f.grounded && f.state !== 'jump' && !f.moves[f.state]);
+      const p2InCombo = hurt(p2);
+      const p1InCombo = hurt(p1);
 
       p1.step(dt, p1Input, p2.x, t1);
       let cpuIn = p2Input;
@@ -131,7 +175,7 @@ export function createRound({ p1Id = 'dario', p2Id = 'sam', chars = null, cpuHan
         cpuIn = cpu.nextInput(dt);
         // difficulty handicap: the CPU fumbles a share of its attack presses
         if (cpuHandicap > 0 && rng() < cpuHandicap) {
-          cpuIn = { ...cpuIn, lp: false, hp: false, lk: false, hk: false, pressed: { ...cpuIn.pressed, lp: false, hp: false, lk: false, hk: false } };
+          cpuIn = { ...cpuIn, lp: false, hp: false, lk: false, hk: false, special: false, pressed: { ...cpuIn.pressed, lp: false, hp: false, lk: false, hk: false, special: false } };
         }
       }
       p2.step(dt, cpuIn, p1.x, t2);
@@ -141,8 +185,8 @@ export function createRound({ p1Id = 'dario', p2Id = 'sam', chars = null, cpuHan
       flags(events, p1, 'p1');
       flags(events, p2, 'p2');
 
-      contact(events, resolve(p1, p2, p2InCombo ? combos.p1.hits + 1 : 1), 'p1', p1, p2, p2InCombo);
-      contact(events, resolve(p2, p1, p1InCombo ? combos.p2.hits + 1 : 1), 'p2', p2, p1, p1InCombo);
+      contact(events, resolveHit(p1, p2, p2InCombo ? combos.p1.hits + 1 : 1), 'p1', p1, p2, p2InCombo);
+      contact(events, resolveHit(p2, p1, p1InCombo ? combos.p2.hits + 1 : 1), 'p2', p2, p1, p1InCombo);
 
       outcome = roundOutcome(p1, p2);
       if (outcome) {

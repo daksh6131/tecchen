@@ -147,8 +147,11 @@ export function createHud(root, { roster, stages }) {
       <div class="fh-name p1"><b></b><span></span></div>
       <div class="fh-name p2"><b></b><span></span></div>
       <div class="fh-round">ROUND 1</div>
-      <div class="fh-combo p1"><b>0</b> HITS <em>0 DMG</em></div>
-      <div class="fh-combo p2"><b>0</b> HITS <em>0 DMG</em></div>
+      <div class="fh-combo p1"><i class="nm"></i><div><b>0</b> HITS <em>0 DMG</em></div></div>
+      <div class="fh-combo p2"><i class="nm"></i><div><b>0</b> HITS <em>0 DMG</em></div></div>
+      <div class="fh-call p1"><b></b><span></span></div>
+      <div class="fh-call p2"><b></b><span></span></div>
+      <div class="fh-moves"><div class="mv-inner"></div><div class="mv-foot">C · CLOSE</div></div>
       <div class="fh-streak">WINS <b>0</b></div>
     </div>
 
@@ -224,6 +227,9 @@ export function createHud(root, { roster, stages }) {
     combo: [q('.fh-combo.p1'), q('.fh-combo.p2')],
     comboN: [q('.fh-combo.p1 b'), q('.fh-combo.p2 b')],
     comboD: [q('.fh-combo.p1 em'), q('.fh-combo.p2 em')],
+    comboName: [q('.fh-combo.p1 .nm'), q('.fh-combo.p2 .nm')],
+    call: [q('.fh-call.p1'), q('.fh-call.p2')],
+    moves: q('.fh-moves'), movesInner: q('.fh-moves .mv-inner'),
     round: q('.fh-round'), streak: q('.fh-streak b'),
     splash: q('.splash'), spText: q('.sp-text'), spSub: q('.sp-sub'), sparks: q('.sp-sparks'), bolts: qa('.sp-bolts .bolt'),
     boot: q('.boot'), title: q('.title'), select: q('.select'), stagesel: q('.stagesel'),
@@ -267,16 +273,38 @@ export function createHud(root, { roster, stages }) {
     },
     setRound(n) { el.round.textContent = `ROUND ${n}`; },
     setStreak(n) { el.streak.textContent = String(n); el.streak.parentElement.classList.toggle('hidden', n <= 0); },
-    setCombo(i, hits, t, damage) {
+    setCombo(i, hits, t, damage, name = null) {
       const c = el.combo[i];
       if (hits < 2 || t <= 0) { c.style.opacity = 0; lastCombo[i] = 0; return; }
       if (lastCombo[i] !== hits) {
         el.comboN[i].textContent = String(hits);
         el.comboD[i].textContent = `${Math.round(damage)} DMG`;
+        el.comboName[i].textContent = name || '';
         c.classList.remove('pop'); void c.offsetWidth; c.classList.add('pop');
         lastCombo[i] = hits;
       }
       c.style.opacity = Math.min(1, t * 2.5);
+    },
+
+    // short side callout: COUNTER HIT, BOUND, RAGE ART + move name
+    callout(i, text, sub = '') {
+      const c = el.call[i];
+      c.querySelector('b').textContent = text;
+      c.querySelector('span').textContent = sub;
+      c.classList.remove('show'); void c.offsetWidth; c.classList.add('show');
+    },
+
+    // move list overlay; lists = [{ name, accent, rows: [[name, input, heights, note]] }] or null
+    showMoves(lists) {
+      el.moves.classList.toggle('show', !!lists);
+      if (!lists) return;
+      const esc = (x) => String(x).replace(/[&<>"]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
+      el.movesInner.innerHTML = lists.map((l) => `
+        <section style="--acc:${esc(l.accent)}">
+          <h3>${esc(l.name)} <small>COMMAND LIST</small></h3>
+          <div class="mv-row mv-head"><span>MOVE</span><span>INPUT</span><span>HITS</span><span>NOTES</span></div>
+          ${l.rows.map((r) => `<div class="mv-row"><span>${esc(r[0])}</span><span class="in">${esc(r[1])}</span><span>${esc(r[2])}</span><span>${esc(r[3])}</span></div>`).join('')}
+        </section>`).join('');
     },
 
     // style: 'round' | 'fight' | 'ko' | 'win' | 'info'

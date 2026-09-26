@@ -1,6 +1,6 @@
 # Character-specific combos (Tekken-style strings) — plan
 
-Date: 2026-09-24. Status: proposed; waiting on animation clips.
+Date: 2026-09-24. Status: built 2026-09-26 on the delivered clips (see section 5).
 
 Frames below are **sim frames at 60 fps** (1 f = 16.7 ms). Clip frames are
 **30 fps** as delivered by Mixamo. Buttons: 1 = LP (U), 2 = HP (I), 3 = LK (J),
@@ -140,3 +140,32 @@ Optional if you want throws later: a paired grab (attacker "Grab" + victim
 5. CPU: teach the AI the strings (starter → follow-ups, juggle routes) with
    difficulty-scaled completion probability.
 6. Tuning pass on the real clips: contact ±3 f, damage, pushback.
+
+## 5. As built (2026-09-26)
+
+- `src3d/strings.js` holds both move graphs and `buildStringMoves`, which fits
+  each clip's playback speed so its first contact (the manifest's authored
+  `contact_frames`, or the measured peak for the original clips) lands on the
+  node's startup. Later contacts of multi-hit clips follow at that speed.
+- `Fighter3D` (`src3d/fighter3d.js`) replaces the shared fighter's attack layer
+  for roster characters: direction tokens, cancel windows (contact − 16 f with
+  the buffer, to contact + 12 f, or + 18 f for delayable links), a tracking
+  step that closes the gap before each follow-up, knockdown → down (60 f) →
+  get-up (58 f, invulnerable), stagger (34 f), one bound per juggle, and Rage
+  Art at full meter.
+- `combat3d.js` resolves per-hit windows, counter hits (victim in startup:
+  +8 f hitstun, ×1.1 damage, CH property upgrades), ground-only hits on downed
+  bodies, and unblockable Rage Arts. Hits that lead into a follow-up only nudge
+  the victim and never pop them, so strings stay on the ground.
+- The sim carries button presses (with their held directions) made during
+  hit-stop into the first free frame, so a follow-up pressed as the hit lands
+  is never lost. Hit-stop per hit is 4 / 6 / 8 f as specified.
+- `ai3d.js`: the CPU plays each character's strings, juggles after launchers,
+  stomps downed opponents (Elon) and spends a full meter on the Rage Art.
+- Presentation: string name in the combo readout, COUNTER HIT / BOUND / RAGE
+  ART callouts, Rage Art slow-motion (0.35× for the first 20 f) with a flash,
+  move list on `C` (pauses the fight).
+- Tests: `tests/strings3d.test.js` (fitted timing, NC guarantee, cancel window
+  close, direction starters, dash input, counter-hit launch, launch → down →
+  get-up, Rage Art meter, flurry multi-hit, ground hits, every string landing
+  in full).

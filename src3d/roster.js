@@ -4,8 +4,17 @@
 // play at mocap speed (see buildMoves).
 import { CHARACTERS } from '../src/characters.js';
 import { PX, BODY_HALF_DEPTH, HURT_HALF_W } from './mapping.js';
+import { STRINGS, buildStringMoves } from './strings.js';
 
 const withBase = (base, extra) => ({ ...base, ...extra, stats: base.stats, moves: base.moves, anims: base.anims });
+
+// strings + fallback-timed move tables; rebuilt from the measured clips once they load
+export function attachStrings(c) {
+  c.strings = STRINGS[c.id];
+  c.baseMoves = c.baseMoves || c.moves;
+  c.moves = buildStringMoves(c.id, {}, c.baseMoves);
+  return c;
+}
 
 export const ROSTER = {
   elon: withBase(CHARACTERS.dario, {
@@ -68,3 +77,6 @@ export function buildMoves(baseMoves, contacts) {
   }
   return out;
 }
+
+attachStrings(ROSTER.elon);
+attachStrings(ROSTER.sam);

@@ -13,6 +13,7 @@ import { createWorld } from './world.js';
 import { createRig } from './rig.js';
 import { createHumanoid } from './humanoid.js';
 import { ROSTER, ATTACK_CLIPS, buildMoves } from './roster.js';
+import { buildStringMoves, moveList, GETUP_MS, STAGGER_MS, F } from './strings.js';
 import { createFX } from './fx.js';
 import { createPost } from './post.js';
 import { createCamera } from './camera.js';
@@ -22,8 +23,7 @@ import * as sfx from './audio3d.js';
 
 const STEP = config.dt;
 const ROUNDS_TO_WIN = 2;
-const P2_KEYMAP = { KeyA: 'left', KeyD: 'right', KeyW: 'up', KeyS: 'down', KeyF: 'lp', KeyG: 'hp', KeyV: 'lk', KeyB: 'hk' };
-const ATTACK_STATES = new Set(['standLP', 'standHP', 'standLK', 'standHK', 'crouchPunch', 'crouchKick', 'jumpPunch', 'jumpKick']);
+const P2_KEYMAP = { KeyA: 'left', KeyD: 'right', KeyW: 'up', KeyS: 'down', KeyF: 'lp', KeyG: 'hp', KeyV: 'lk', KeyB: 'hk', KeyN: 'special' };
 const BLEND_S = 0.09;
 
 export function startGame({ canvas, hudRoot }) {
@@ -60,7 +60,12 @@ export function startGame({ canvas, hudRoot }) {
     .then((h) => {
       world.scene.remove(bodies[c.id].object); bodies[c.id] = h; world.scene.add(h.object);
       // once the clips are measured, re-time this fighter's frame data to where each strike really lands
-      h.clipsPromise.then(() => { if (h.clipsReady) c.moves = buildMoves(c.moves, h.contacts); });
+      // string moves are fitted to the measured clips and their authored contact frames
+      h.clipsPromise.then(() => {
+        if (!h.clipsReady) return;
+        const base = buildMoves(c.baseMoves || c.moves, h.contacts);
+        c.moves = c.strings ? buildStringMoves(c.id, h.clipInfo(), base) : base;
+      });
     })))
     .catch((err) => console.error('character load failed, keeping placeholder rigs', err));
 
@@ -100,6 +105,8 @@ export function startGame({ canvas, hudRoot }) {
   let roundEndT = 0;
   let roundStartHealth = [0, 0];
   let breathT = 2;
+  let rageT = 0;                       // Rage Art activation slow-motion
+  let movesOpen = false;               // move list overlay (pauses the fight)
   const prevState = ['idle', 'idle'];
   const stateSerial = [0, 0];          // bumps on every state entry so repeated attacks restart their clip
   const lastHitHeight = ['high', 'high'];
@@ -130,6 +137,7 @@ export function startGame({ canvas, hudRoot }) {
     round = createRound({ chars: pair, cpuHandicap: p2Human ? 0 : DIFFICULTIES[selDiff].handicap, minGap });
     roundNo += 1;
     roundEndT = 0;
+    rageT = 0;
     cam.clearKO();
     hud.hideSplash();
     hud.setRound(roundNo);
@@ -236,6 +244,12 @@ export function startGame({ canvas, hudRoot }) {
       else if (e.code === 'Escape' || e.code === 'Backspace') enterSelect();
       return;
     }
+    if (e.code === 'KeyC') {
+      movesOpen = !movesOpen;
+      hud.showMoves(movesOpen ? pair.map((c) => ({ name: c.name, accent: c.accent, rows: moveList(c.id) })) : null);
+      return;
+    }
+    if (movesOpen && (e.code === 'Escape' || e.code === 'Backspace')) { movesOpen = false; hud.showMoves(null); return; }
     if (e.code === 'Digit2') { p2Human = !p2Human; hud.splash(p2Human ? 'P2 HUMAN' : 'P2 CPU', '', 0.9, 'info'); hud.setFighters(pair[0], pair[1], tags()); }
     if (e.code === 'Enter' && matchOver) newMatch();
     if (e.code === 'Escape' || e.code === 'Backspace') enterSelect();
@@ -303,8 +317,20 @@ export function startGame({ canvas, hudRoot }) {
           const victim = e.attacker === 'p1' ? 1 : 0;
           noteHit(e.attacker === 'p1' ? 0 : 1, false);
           lastHitHeight[victim] = e.height === 'high' ? 'high' : 'body';
-          fx.hit(wx, wy, 0, { heavy: e.heavy, launched: e.launched, color });
-          if (e.launched) sfx.launch(victim); else sfx.hit(e.heavy, victim);
+          fx.hit(wx, wy, 0, { heavy: e.heavy, launched: e.launched || e.ender, color });
+          if (e.launched || e.knockdown || e.bound || e.rageFinish) sfx.launch(victim); else sfx.hit(e.heavy, victim);
+          if (e.counter) hud.callout(e.attacker === 'p1' ? 0 : 1, 'COUNTER HIT');
+          else if (e.bound) hud.callout(e.attacker === 'p1' ? 0 : 1, 'BOUND');
+          if (e.rageFinish) fx.ko(wx, wy, 0, color);
+          break;
+        }
+        case 'rage': {
+          const idx = e.who === 'p1' ? 0 : 1;
+          const f = idx ? round.p2 : round.p1;
+          rageT = 20 * F / 1000 / 0.35;            // the first 20 frames play at 0.35x
+          fx.rage(toWorldX(f.x), toWorldY(f.y) + 1.1, 0, pair[idx].accent);
+          sfx.stinger('ko');
+          hud.callout(idx, 'RAGE ART', f.moves[f.state]?.name || '');
           break;
         }
         case 'block':
@@ -351,17 +377,19 @@ export function startGame({ canvas, hudRoot }) {
   }
 
   function simStep(dt) {
-    if (mode !== 'fight') return;
+    if (mode !== 'fight' || movesOpen) return;
     const i1 = input.snapshot();
     const i2 = p2Human ? input2.snapshot() : null;
-    handleEvents(round.step(dt, i1, i2));
+    const slow = rageT > 0 ? 0.35 : 1;
+    if (rageT > 0) rageT -= dt;
+    handleEvents(round.step(dt * slow, i1, i2));
 
     [round.p1, round.p2].forEach((f, i) => {
       if (f.state !== prevState[i]) {
         stateSerial[i] += 1;
-        if (ATTACK_STATES.has(f.state)) {
-          const heavy = f.state === 'standHK' || f.state === 'standHP' || f.state === 'crouchPunch';
+        if (f.moves[f.state]) {
           const m = f.moves[f.state];
+          const heavy = m.heavy ?? (f.state === 'standHK' || f.state === 'standHP' || f.state === 'crouchPunch');
           const serial = stateSerial[i];
           const state = f.state;
           // the swing and the attacker's grunt sit just before the blow lands, not at the wind-up
@@ -411,9 +439,12 @@ export function startGame({ canvas, hudRoot }) {
           dir: Math.sign(f.vx || 0) * f.facing || 1,
           hitHeight: lastHitHeight[i],
           hitstunMs: f.hitstunMs || (m && m.hitstunMs) || 300,
+          clip: m && m.clip, clipSpeed: m && m.clipSpeed,
+          fallClip: f._fallClip, fallSerial: f._fallSerial,
+          getupS: GETUP_MS / 1000, staggerS: STAGGER_MS / 1000,
         });
-        const frozen = mode === 'fight' && round.frozen;
-        const slow = mode === 'fight' && round.outcome && !round.koSettled ? 0.35 : 1;
+        const frozen = mode === 'fight' && (round.frozen || movesOpen);
+        const slow = mode === 'fight' && ((round.outcome && !round.koSettled) || rageT > 0) ? 0.35 : 1;
         rig.tick(frozen ? 0 : dt * slow, mode === 'fight' ? f.stateClock : t * 1000);
       }
       const wx = toWorldX(f.x), wy = toWorldY(f.y);
@@ -434,8 +465,8 @@ export function startGame({ canvas, hudRoot }) {
       };
       hud.setDebug(`${line(0)}\n${line(1)}`);
     }
-    hud.setCombo(0, round.combos.p1.hits, round.combos.p1.t, round.combos.p1.damage);
-    hud.setCombo(1, round.combos.p2.hits, round.combos.p2.t, round.combos.p2.damage);
+    hud.setCombo(0, round.combos.p1.hits, round.combos.p1.t, round.combos.p1.damage, round.combos.p1.name);
+    hud.setCombo(1, round.combos.p2.hits, round.combos.p2.t, round.combos.p2.damage, round.combos.p2.name);
     hud.update(dt, [p1.health / pair[0].stats.health, p2.health / pair[1].stats.health]);
 
     const mid = (toWorldX(p1.x) + toWorldX(p2.x)) / 2;
@@ -466,5 +497,12 @@ export function startGame({ canvas, hudRoot }) {
   }
   requestAnimationFrame(frame);
 
-  return { renderer, world, post, bodies, crosscheck, graphics: qualityName, get round() { return round; }, loadStage, get mode() { return mode; }, enterSelect, enterFight };
+  // debug: step the game by hand (tests and hidden tabs, where rAF is paused)
+  function advance(seconds, { render = false } = {}) {
+    const n = Math.round(seconds / STEP);
+    for (let i = 0; i < n; i++) { simStep(STEP); t += STEP; if (render) present(t, STEP); }
+    present(t, STEP);
+  }
+
+  return { renderer, world, post, bodies, crosscheck, graphics: qualityName, get round() { return round; }, loadStage, get mode() { return mode; }, enterSelect, enterFight, advance };
 }
